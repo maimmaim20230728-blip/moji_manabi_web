@@ -270,3 +270,22 @@ html:lang(ja) .btn-row .btn, html:lang(ko) .btn-row .btn{ word-break:keep-all; }
 .trace-done-msg{ font-weight:700; margin:12px 0 0; }
 /* せっていの出典リンク: どのテーマでも読める色・押せる高さ44px以上 */
 .hint a{ color:var(--ink); text-decoration:underline; display:inline-block; padding:10px 2px; }
+
+/* ======== 緑の上の文字と、文字用の緑(2026-09-29 点検の直し moji-16 / 8本共通 A・B) ========
+   ・--on-brand = 緑の上の文字色。くろは緑が明るい(#43c08a)ので白い文字だと 2.3:1 しかない → 濃い緑の文字(7.2:1)
+   ・--hd-btn-bg = ヘッダーのボタンの地(半透明の白をやめ、どのテーマでも 4.5:1 以上になる色)
+   ・--brand-ink = 文字を載せる緑(ヘッダーの地・主ボタン・chip.on・一覧の ✓ など)と、緑を文字色に使う所(下ナビの選択中・リンク)。
+     みどり・しろ #237a52 / みずいろ #1f6f8f / くろ = --brand(字は --on-brand の濃い色)。
+     枠・線・飾り、なぞりの台のお手本の線・ゆびの線は --brand のまま(塗りのボタンの枠だけは地と同じ色にそろえる) */
+:root{ --on-brand:#fff; --hd-btn-bg:rgba(0,0,0,.28); --brand-ink:#237a52; }
+body[data-theme="aqua"]{ --brand-ink:#1f6f8f; }
+body[data-theme="white"]{ --brand-ink:#237a52; }
+body[data-theme="dark"]{ --on-brand:#10231a; --hd-btn-bg:rgba(255,255,255,.35); --brand-ink:var(--brand); }
+header#hd{ background:var(--brand-ink); }
+header#hd, .lang-label{ color:var(--on-brand); }
+.hd-btn{ background:var(--hd-btn-bg); color:var(--on-brand); }
+.btn.primary, .big-btn.primary, .chip.on{ border-color:var(--brand-ink); background:var(--brand-ink); color:var(--on-brand); }
+.ov-close, .call-btn{ background:var(--brand-ink); color:var(--on-brand); }
+#scr-list .kanji-btn.done::after{ background:var(--brand-ink); color:var(--on-brand); }
+.nav-btn.active{ color:var(--brand-ink); }
+.credit a{ color:var(--brand-ink); }

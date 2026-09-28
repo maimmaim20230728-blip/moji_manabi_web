@@ -9,7 +9,7 @@
      変えたら README の「シェルの変更点」に書く */
 (function(){
 
-var VER = '0.4.1';               // 🔴 更新のたびに上げる(build.gradle の versionName / sw.js の CACHE と一緒に)
+var VER = '0.4.2';               // 🔴 更新のたびに上げる(build.gradle の versionName / sw.js の CACHE と一緒に)
 var APP_KEY = 'moji_manabi';        // バックアップの識別(別アプリのファイルを読まない)
 var LS = 'moji.';
 var LS_PREF = LS + 'pref.v1';
@@ -275,15 +275,34 @@ function exportBackup(){
   setTimeout(function(){ URL.revokeObjectURL(a.href); }, 3000);
   toast(T('set.exported'));
 }
+/* よみこむ(2026-09-29 点検の直し D): 形を確かめてから window.confirm で聞く(Capacitor の WebView ではネイティブのダイアログ)。
+   やめる → 何も変えない。OK → 丸ごと入れ替え = ファイルに無い、このアプリの保存キー(「moji.」で始まるもの)を消してから、ファイルの中身を書く。
+   ほかのアプリのキーは消さない(Web版は同じオリジンに別のアプリが同居する)。
+   confirm が無い環境(疑似DOMのスモーク)は聞かずに進む */
+function askImport(){
+  try{ if(typeof window !== 'undefined' && typeof window.confirm === 'function') return !!window.confirm(T('set.importConfirm')); }catch(_){ return false; }
+  return true;
+}
 function importBackup(e){
   var f = e.target.files && e.target.files[0];
   if(!f) return;
   var r = new FileReader();
   r.onload = function(){
+    var d;
     try{
-      var d = JSON.parse(r.result);
-      if(d.app !== APP_KEY) throw new Error('different app');
-      if(d.data && typeof d.data === 'object'){ for(var k in d.data){ saveJSON(LS + k, d.data[k]); } }
+      d = JSON.parse(r.result);
+      if(!d || d.app !== APP_KEY) throw new Error('different app');
+      if(d.data != null && (typeof d.data !== 'object' || Array.isArray(d.data))) throw new Error('bad data');
+    }catch(err){ toast(T('set.importFail')); return; }
+    if(!askImport()) return;
+    try{
+      var data = d.data || {}, old = [], i, k;
+      for(i = 0; i < localStorage.length; i++){
+        k = localStorage.key(i);
+        if(k && k.indexOf(LS) === 0 && k !== LS_PREF && !Object.prototype.hasOwnProperty.call(data, k.slice(LS.length))) old.push(k);
+      }
+      old.forEach(removeKey);
+      for(k in data){ if(Object.prototype.hasOwnProperty.call(data, k)) saveJSON(LS + k, data[k]); }
       pref = sanitizePref(d.pref);
       savePref();
       applyAll(true);

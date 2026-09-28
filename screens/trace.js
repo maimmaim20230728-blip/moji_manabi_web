@@ -3,7 +3,7 @@
    ・list/today 画面が api.save('cur', code) に置いた字を、data/kanji1.js(window.MOJI_KANJI1)から引く
    ・SVG(viewBox 0 0 109 109・KanjiVG座標)に全画を薄い線で描き、いまの画だけ stroke-dasharray のアニメで1画ずつ動かす
    ・その上に canvas を重ねて ゆびで なぞれる(判定はしない。「つぎの画」で進む)
-   ・読み上げ = api.speak(訓読みがあれば訓・無ければ音・無ければ字そのもの)
+   ・読み上げ = api.speak(画面の順に 音、訓 を続けて読む。例「サン、やま」。読みが無ければ字そのもの。日本語 ja-JP)
    ・「できた」= moji.today に字を入れるだけ(点数・累計・達成率・失敗音なし) */
 (function(){
   var NS = 'http://www.w3.org/2000/svg';
@@ -21,10 +21,17 @@
     for(var i = 0; i < data.length; i++) if(data[i].code === code) return { k: data[i], i: i };
     return null;
   }
+  /* よみあげの文(2026-09-29 点検の直し moji-15・案A): 画面に出ている順(音 → 訓)に続けて読む。例 山 =「サン、やま」。
+     1つの欄に読みが複数あるときも画面の順のまま読点で区切る。送りがなの括弧は外す。読みが1つも無い字は字そのものを読む */
   function readingOf(k){
-    if(k.kun) return k.kun.replace(/[()（）]/g, '');
-    if(k.on) return k.on;
-    return k.char;
+    var parts = [];
+    [k.on, k.kun].forEach(function(v){
+      String(v || '').split(/[、,，・\/／\s]+/).forEach(function(r){
+        r = r.replace(/[()（）]/g, '');
+        if(r) parts.push(r);
+      });
+    });
+    return parts.length ? parts.join('、') : String(k.char || '');
   }
   function brandColor(){
     try{

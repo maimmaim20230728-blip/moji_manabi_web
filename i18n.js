@@ -38,6 +38,7 @@ var ja = {
     bkHint:'あたらしい スマホに うつるときは、「かきだす」で ファイルを ほぞんして、あたらしい スマホで「よみこむ」を おしてください。',
     bkExport:'かきだす', bkImport:'よみこむ',
     exported:'かきだしました ✓', imported:'よみこみました ✓', importFail:'よみこめませんでした',
+    importConfirm:'いまの ないようは、ファイルの ないように おきかわります。よみこみますか?',
     note:'なぞった字の きろくと せっていは、この端末の中だけに ほぞんされます。どこにも 送られません。',
     privacy:'プライバシーポリシー',
     credit:'アプリ開発：介護と支援の相談どころ そよぎ',
@@ -91,7 +92,7 @@ var ja = {
 
 /* ============ en ============ */
 var en = {
-  app: { name:'Stroke Order Review - SOYOGI', short:'Stroke Order Review', tagline:'No wrong marks. Only the practice for today.' },
+  app: { name:'Stroke Order Review - SOYOGI', short:'Stroke Order Review', tagline:'No wrong marks. Relearning, just today\'s share.' },
   nav: { home:'Home', list:'Trace', today:'Today', set:'Settings' },
   common: {
     ok:'OK', cancel:'Cancel', save:'Save', del:'Delete', back:'Back', close:'Close',
@@ -117,6 +118,7 @@ var en = {
     bkHint:'When you move to a new phone, tap "Export" to save a file, then tap "Import" on the new phone.',
     bkExport:'Export', bkImport:'Import',
     exported:'Exported ✓', imported:'Imported ✓', importFail:'Could not import',
+    importConfirm:'Your current entries will be replaced with the file\'s contents. Import it?',
     note:'The kanji you traced and your settings are stored only on this device. Nothing is sent anywhere.',
     privacy:'Privacy policy',
     credit:'Developed by SOYOGI, a care and support consultation service',
@@ -126,7 +128,7 @@ var en = {
   screen: {
     home: {
       title:'Stroke Order Review',
-      lead:'Trace kanji taught in elementary school with your finger, one stroke at a time, in the right order.',
+      lead:'Trace kanji first taught in Japanese elementary school (a basic level) with your finger, one stroke at a time, in the right order.',
       btnList:'Trace a kanji',
       btnToday:'Kanji I traced today',
       hint:'Nothing is judged and no score is shown. Any kanji, as many times as you like.',
@@ -134,7 +136,7 @@ var en = {
     },
     list: {
       title:'Choose a kanji to trace',
-      sub:'The first 80 kanji taught in elementary school',
+      sub:'The first 80 of the kanji taught in Japanese elementary school (a basic level)',
       noData:'No stroke data is available.'
     },
     trace: {
@@ -176,7 +178,7 @@ TBL.de = mergeDeep(JSON.parse(JSON.stringify(en)), {
   "app": {
     "name": "Kanji-Strichfolge - SOYOGI",
     "short": "Kanji-Strichfolge",
-    "tagline": "Nichts wird als falsch markiert. Nur das Üben für heute."
+    "tagline": "Nichts wird als falsch markiert. Nur die Wiederholung für heute."
   },
   "nav": {
     "home": "Start",
@@ -252,6 +254,7 @@ TBL.de = mergeDeep(JSON.parse(JSON.stringify(en)), {
     "exported": "Exportiert ✓",
     "imported": "Importiert ✓",
     "importFail": "Import nicht möglich",
+    "importConfirm": "Ihre aktuellen Einträge werden durch den Inhalt der Datei ersetzt. Möchten Sie importieren?",
     "note": "Die nachgezeichneten Kanji und Ihre Einstellungen werden nur auf diesem Gerät gespeichert. Nichts wird irgendwohin gesendet.",
     "privacy": "Datenschutzerklärung",
     "credit": "App-Entwicklung: SOYOGI, ein Ort für Beratung zu Pflege und Unterstützung",
@@ -261,7 +264,7 @@ TBL.de = mergeDeep(JSON.parse(JSON.stringify(en)), {
   "screen": {
     "home": {
       "title": "Kanji-Strichfolge",
-      "lead": "Sie zeichnen Kanji, die in der Grundschule gelernt werden, mit dem Finger in der richtigen Strichfolge nach.",
+      "lead": "Sie zeichnen Kanji auf Grundniveau (die zuerst in der japanischen Grundschule gelernt werden) mit dem Finger in der richtigen Strichfolge nach.",
       "btnList": "Kanji nachzeichnen",
       "btnToday": "Heute geübte Kanji",
       "hint": "Es wird nicht beurteilt, ob etwas gelungen ist. Punkte gibt es auch nicht. Beliebige Kanji, so oft Sie möchten.",
@@ -269,7 +272,7 @@ TBL.de = mergeDeep(JSON.parse(JSON.stringify(en)), {
     },
     "list": {
       "title": "Kanji zum Nachzeichnen auswählen",
-      "sub": "Die ersten 80 der Kanji, die in der Grundschule gelernt werden",
+      "sub": "Die ersten 80 der Kanji, die in der japanischen Grundschule gelernt werden (Grundniveau)",
       "noData": "Es sind keine Daten zur Strichfolge vorhanden."
     },
     "trace": {
@@ -308,7 +311,7 @@ TBL.fr = mergeDeep(JSON.parse(JSON.stringify(en)), {
   "app": {
     "name": "Revoir les traits - SOYOGI",
     "short": "Revoir les traits",
-    "tagline": "Aucune marque d'erreur. Juste la pratique du jour."
+    "tagline": "Aucune marque d'erreur. Juste la révision du jour."
   },
   "nav": {
     "home": "Accueil",
@@ -384,6 +387,7 @@ TBL.fr = mergeDeep(JSON.parse(JSON.stringify(en)), {
     "exported": "Exporté ✓",
     "imported": "Importé ✓",
     "importFail": "Impossible d'importer",
+    "importConfirm": "Vos données actuelles seront remplacées par le contenu du fichier. Importer le fichier ?",
     "note": "Les kanji tracés et vos réglages sont enregistrés uniquement sur cet appareil. Rien n'est envoyé ailleurs.",
     "privacy": "Politique de confidentialité",
     "credit": "Application développée par SOYOGI, espace de conseil pour les soins et l'accompagnement",
@@ -393,7 +397,7 @@ TBL.fr = mergeDeep(JSON.parse(JSON.stringify(en)), {
   "screen": {
     "home": {
       "title": "Revoir les traits",
-      "lead": "Tracez avec le doigt les kanji appris à l'école primaire, en suivant l'ordre des traits.",
+      "lead": "Tracez avec le doigt des kanji de niveau de base (les premiers appris à l'école primaire au Japon), en suivant l'ordre des traits.",
       "btnList": "Tracer un kanji",
       "btnToday": "Kanji tracés aujourd'hui",
       "hint": "Rien n'est évalué et aucun score ne s'affiche. Les kanji que vous aimez, autant que vous le voulez.",
@@ -401,7 +405,7 @@ TBL.fr = mergeDeep(JSON.parse(JSON.stringify(en)), {
     },
     "list": {
       "title": "Choisir un kanji à tracer",
-      "sub": "Les 80 premiers kanji appris à l'école primaire",
+      "sub": "Les 80 premiers kanji appris à l'école primaire au Japon (niveau de base)",
       "noData": "Aucune donnée d'ordre des traits."
     },
     "trace": {
@@ -440,7 +444,7 @@ TBL.es = mergeDeep(JSON.parse(JSON.stringify(en)), {
   "app": {
     "name": "Repaso de trazos - SOYOGI",
     "short": "Repaso de trazos",
-    "tagline": "Sin marcas de error. Solo la práctica de hoy."
+    "tagline": "Sin marcas de error. Solo el repaso de hoy."
   },
   "nav": {
     "home": "Inicio",
@@ -516,6 +520,7 @@ TBL.es = mergeDeep(JSON.parse(JSON.stringify(en)), {
     "exported": "Exportado ✓",
     "imported": "Importado ✓",
     "importFail": "No se pudo importar",
+    "importConfirm": "El contenido actual se reemplazará por el del archivo. ¿Importarlo?",
     "note": "Los kanji trazados y los ajustes se guardan solo en este dispositivo. No se envía nada a ningún lugar.",
     "privacy": "Política de privacidad",
     "credit": "Desarrollado por SOYOGI, servicio de consulta sobre cuidados y apoyo",
@@ -525,7 +530,7 @@ TBL.es = mergeDeep(JSON.parse(JSON.stringify(en)), {
   "screen": {
     "home": {
       "title": "Repaso de trazos",
-      "lead": "Trazar con el dedo, siguiendo el orden de los trazos, los kanji que se aprenden en la escuela primaria.",
+      "lead": "Trazar con el dedo, siguiendo el orden de los trazos, kanji de nivel básico (los primeros que se aprenden en la escuela primaria de Japón).",
       "btnList": "Trazar un kanji",
       "btnToday": "Kanji trazados hoy",
       "hint": "No se evalúa si sale bien o no. Tampoco hay puntuación. Cualquier kanji, tantas veces como se quiera.",
@@ -533,7 +538,7 @@ TBL.es = mergeDeep(JSON.parse(JSON.stringify(en)), {
     },
     "list": {
       "title": "Elegir un kanji para trazar",
-      "sub": "Los primeros 80 kanji que se aprenden en la escuela primaria",
+      "sub": "Los primeros 80 kanji que se aprenden en la escuela primaria de Japón (nivel básico)",
       "noData": "No hay datos del orden de trazos."
     },
     "trace": {
@@ -648,6 +653,7 @@ TBL.it = mergeDeep(JSON.parse(JSON.stringify(en)), {
     "exported": "Esportato ✓",
     "imported": "Importato ✓",
     "importFail": "Impossibile importare",
+    "importConfirm": "I contenuti attuali verranno sostituiti con quelli del file. Vuole importarlo?",
     "note": "I kanji ricalcati e le impostazioni vengono salvati solo su questo dispositivo. Non viene inviato niente da nessuna parte.",
     "privacy": "Informativa sulla privacy",
     "credit": "App sviluppata da SOYOGI, servizio di consulenza su assistenza e sostegno",
@@ -657,7 +663,7 @@ TBL.it = mergeDeep(JSON.parse(JSON.stringify(en)), {
   "screen": {
     "home": {
       "title": "Ripasso dei tratti",
-      "lead": "Ricalchi con il dito i kanji insegnati alla scuola elementare, un tratto alla volta, seguendo l'ordine di scrittura.",
+      "lead": "Ricalchi con il dito kanji di livello base (i primi insegnati alla scuola elementare in Giappone), un tratto alla volta, seguendo l'ordine di scrittura.",
       "btnList": "Ricalca un kanji",
       "btnToday": "Kanji ricalcati oggi",
       "hint": "Non viene valutato se è venuto bene o no. Non ci sono punteggi. I kanji che preferisce, quante volte vuole.",
@@ -665,7 +671,7 @@ TBL.it = mergeDeep(JSON.parse(JSON.stringify(en)), {
     },
     "list": {
       "title": "Scelga un kanji da ricalcare",
-      "sub": "I primi 80 kanji insegnati alla scuola elementare",
+      "sub": "I primi 80 kanji insegnati alla scuola elementare in Giappone (livello base)",
       "noData": "Non ci sono dati sull'ordine dei tratti."
     },
     "trace": {
@@ -704,7 +710,7 @@ TBL.pt = mergeDeep(JSON.parse(JSON.stringify(en)), {
   "app": {
     "name": "Revisão dos traços - SOYOGI",
     "short": "Revisão dos traços",
-    "tagline": "Sem marcas de erro. Só a prática de hoje."
+    "tagline": "Sem marcas de erro. Só a revisão de hoje."
   },
   "nav": {
     "home": "Início",
@@ -780,6 +786,7 @@ TBL.pt = mergeDeep(JSON.parse(JSON.stringify(en)), {
     "exported": "Exportado ✓",
     "imported": "Importado ✓",
     "importFail": "Não foi possível importar",
+    "importConfirm": "O conteúdo atual vai ser substituído pelo conteúdo do ficheiro. Importar?",
     "note": "Os kanji traçados e os ajustes ficam guardados só neste dispositivo. Nada é enviado para fora.",
     "privacy": "Política de privacidade",
     "credit": "Desenvolvimento da app: SOYOGI, serviço de consulta sobre cuidados e apoio",
@@ -789,7 +796,7 @@ TBL.pt = mergeDeep(JSON.parse(JSON.stringify(en)), {
   "screen": {
     "home": {
       "title": "Revisão dos traços",
-      "lead": "Traçar com o dedo os kanji aprendidos na escola primária, seguindo a ordem dos traços.",
+      "lead": "Traçar com o dedo kanji de nível básico (os primeiros aprendidos na escola primária no Japão), seguindo a ordem dos traços.",
       "btnList": "Traçar kanji",
       "btnToday": "Kanji traçados hoje",
       "hint": "Não há avaliação de acerto nem pontuação. O kanji que quiser, quantas vezes quiser.",
@@ -797,7 +804,7 @@ TBL.pt = mergeDeep(JSON.parse(JSON.stringify(en)), {
     },
     "list": {
       "title": "Escolher um kanji para traçar",
-      "sub": "Os primeiros 80 kanji aprendidos na escola primária",
+      "sub": "Os primeiros 80 kanji aprendidos na escola primária no Japão (nível básico)",
       "noData": "Não há dados da ordem dos traços."
     },
     "trace": {
@@ -836,7 +843,7 @@ TBL.nl = mergeDeep(JSON.parse(JSON.stringify(en)), {
   "app": {
     "name": "Schrijfvolgorde - SOYOGI",
     "short": "Schrijfvolgorde",
-    "tagline": "Geen kruisjes voor fouten. Alleen het oefenen van vandaag."
+    "tagline": "Geen kruisjes voor fouten. Alleen de herhaling van vandaag."
   },
   "nav": {
     "home": "Start",
@@ -912,6 +919,7 @@ TBL.nl = mergeDeep(JSON.parse(JSON.stringify(en)), {
     "exported": "Geëxporteerd ✓",
     "imported": "Geïmporteerd ✓",
     "importFail": "Kon niet importeren",
+    "importConfirm": "Uw huidige gegevens worden vervangen door de inhoud van het bestand. Wilt u importeren?",
     "note": "De overgetrokken kanji en uw instellingen worden alleen op dit apparaat bewaard. Er wordt niets verstuurd.",
     "privacy": "Privacybeleid",
     "credit": "App ontwikkeld door SOYOGI, een adviespunt voor zorg en ondersteuning",
@@ -921,7 +929,7 @@ TBL.nl = mergeDeep(JSON.parse(JSON.stringify(en)), {
   "screen": {
     "home": {
       "title": "Schrijfvolgorde",
-      "lead": "Trek kanji die op de basisschool worden geleerd met uw vinger over, in de juiste schrijfvolgorde.",
+      "lead": "Trek kanji van basisniveau (die op de Japanse basisschool als eerste worden geleerd) met uw vinger over, in de juiste schrijfvolgorde.",
       "btnList": "Kanji overtrekken",
       "btnToday": "Vandaag overgetrokken kanji",
       "hint": "Er wordt niet beoordeeld of het goed is, en er zijn geen punten. Elke kanji die u wilt, zo vaak als u wilt.",
@@ -929,7 +937,7 @@ TBL.nl = mergeDeep(JSON.parse(JSON.stringify(en)), {
     },
     "list": {
       "title": "Kies een kanji om over te trekken",
-      "sub": "De eerste 80 kanji die op de basisschool worden geleerd",
+      "sub": "De eerste 80 kanji die op de Japanse basisschool worden geleerd (basisniveau)",
       "noData": "Er zijn geen gegevens over de schrijfvolgorde."
     },
     "trace": {
@@ -968,7 +976,7 @@ TBL.sv = mergeDeep(JSON.parse(JSON.stringify(en)), {
   "app": {
     "name": "Streckordningen igen - SOYOGI",
     "short": "Streckordningen igen",
-    "tagline": "Inga felmarkeringar. Bara dagens övning."
+    "tagline": "Inga felmarkeringar. Bara dagens repetition."
   },
   "nav": {
     "home": "Hem",
@@ -1044,6 +1052,7 @@ TBL.sv = mergeDeep(JSON.parse(JSON.stringify(en)), {
     "exported": "Exporterat ✓",
     "imported": "Importerat ✓",
     "importFail": "Det gick inte att importera",
+    "importConfirm": "Det du har nu ersätts med innehållet i filen. Vill du importera?",
     "note": "De kanji du har spårat och dina inställningar sparas bara på den här enheten. Inget skickas någonstans.",
     "privacy": "Integritetspolicy",
     "credit": "Apputveckling: SOYOGI, en plats för rådgivning om omsorg och stöd",
@@ -1176,6 +1185,7 @@ TBL.ko = mergeDeep(JSON.parse(JSON.stringify(en)), {
     "exported": "내보냈어요 ✓",
     "imported": "가져왔어요 ✓",
     "importFail": "가져오지 못했어요",
+    "importConfirm": "지금 내용은 파일 내용으로 바뀌어요. 가져올까요?",
     "note": "따라 쓴 글자 기록과 설정은 이 기기 안에만 저장돼요. 어디에도 보내지 않아요.",
     "privacy": "개인정보 처리방침",
     "credit": "앱 개발: 돌봄과 지원 상담소 SOYOGI",
@@ -1308,6 +1318,7 @@ TBL.zh = mergeDeep(JSON.parse(JSON.stringify(en)), {
     "exported": "已导出 ✓",
     "imported": "已导入 ✓",
     "importFail": "无法导入",
+    "importConfirm": "现在的内容将被文件的内容替换。要导入吗？",
     "note": "描过的字的记录和设置只保存在这台设备里，不会发送到任何地方。",
     "privacy": "隐私政策",
     "credit": "应用开发：护理与支援咨询处 SOYOGI",
@@ -1440,6 +1451,7 @@ TBL.ar = mergeDeep(JSON.parse(JSON.stringify(en)), {
     "exported": "تم التصدير ✓",
     "imported": "تم الاستيراد ✓",
     "importFail": "تعذّر الاستيراد",
+    "importConfirm": "سيُستبدَل المحتوى الحالي بمحتوى الملف. هل تريد الاستيراد؟",
     "note": "تُحفَظ الحروف التي تتبّعتها وإعداداتك على هذا الجهاز فقط. ولا يُرسَل أي شيء إلى أي مكان.",
     "privacy": "سياسة الخصوصية",
     "credit": "تطوير التطبيق: SOYOGI، مكان للاستشارة في الرعاية والدعم",
@@ -1449,7 +1461,7 @@ TBL.ar = mergeDeep(JSON.parse(JSON.stringify(en)), {
   "screen": {
     "home": {
       "title": "مراجعة ترتيب الخطوط",
-      "lead": "تتبّع بإصبعك حروف الكانجي التي تُدرَّس في المدرسة الابتدائية، بحسب ترتيب الخطوط.",
+      "lead": "تتبّع بإصبعك حروف كانجي من المستوى الأساسي (أول ما يُدرَّس في المدرسة الابتدائية في اليابان)، بحسب ترتيب الخطوط.",
       "btnList": "تتبّع حرف كانجي",
       "btnToday": "حروف اليوم",
       "hint": "لا يوجد حكم على الصواب أو الخطأ، ولا تظهر أي درجات. أي حرف تحبه، بقدر ما تحب.",
@@ -1457,7 +1469,7 @@ TBL.ar = mergeDeep(JSON.parse(JSON.stringify(en)), {
     },
     "list": {
       "title": "اختر حرفًا لتتبّعه",
-      "sub": "أول 80 حرفًا من حروف الكانجي التي تُدرَّس في المدرسة الابتدائية",
+      "sub": "أول 80 حرفًا من حروف الكانجي التي تُدرَّس في المدرسة الابتدائية في اليابان (المستوى الأساسي)",
       "noData": "لا توجد بيانات لترتيب الخطوط."
     },
     "trace": {
