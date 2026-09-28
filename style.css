@@ -289,3 +289,27 @@ header#hd, .lang-label{ color:var(--on-brand); }
 #scr-list .kanji-btn.done::after{ background:var(--brand-ink); color:var(--on-brand); }
 .nav-btn.active{ color:var(--brand-ink); }
 .credit a{ color:var(--brand-ink); }
+
+/* ======== 一覧: 年のタブと「字で さがす」(2026-09-29 小学校で習う1026字・アプリ固有) ========
+   ・タブの列の数は screens/list.js の fitTabs が実寸で 6 → 3 → 2 → 1 から選ぶ(ここの 3 は JS が動く前の既定)
+   ・選んでいるタブは主ボタンと同じ「文字を載せる緑」(--brand-ink / --on-brand)。枠の色だけに頼らない
+   ・さがす欄の枠は --brand(白地・くろの地で 3:1 以上)。字は大きめ */
+.grade-tabs{ display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:6px; margin:4px 0 10px; }
+.grade-tab{
+  min-height:48px; min-width:44px; padding:0 6px;
+  border:2px solid var(--line); background:var(--card); color:var(--ink); border-radius:12px;
+  font-family:inherit; font-size:1em; font-weight:700; line-height:1.2;
+  white-space:nowrap; overflow:hidden;
+}
+.grade-tab.on{ border-color:var(--brand-ink); background:var(--brand-ink); color:var(--on-brand); }
+.kanji-find{ margin:6px 0 12px; }
+.find-label{ display:block; font-weight:700; margin:0 0 4px; }
+.find-row{ display:flex; gap:10px; align-items:stretch; }
+.find-in{
+  flex:0 1 5.5em; min-width:0; min-height:52px; padding:4px 10px;
+  border:2px solid var(--brand); background:var(--card); color:var(--ink); border-radius:12px;
+  font-family:inherit; font-size:1.3em; font-weight:700; text-align:center;
+}
+.find-go{ flex:none; }
+.find-msg{ margin:6px 0 0; font-weight:700; color:var(--ink); overflow-wrap:anywhere; }
+.find-msg:empty{ margin:0; }

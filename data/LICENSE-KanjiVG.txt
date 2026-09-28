@@ -1,0 +1,15 @@
+このアプリの書き順データ(data/kanji.js)は、KanjiVG プロジェクトの kanji/ の SVG をもとに作ったものです(取得 2026-09-28〜29・node data_src/_fetch_kanjivg.js)。
+The stroke order data in this app (data/kanji.js) is derived from the SVG files in the KanjiVG project (kanji/ directory), fetched on 2026-09-28/29.
+
+KanjiVG
+Copyright (C) 2009-2024 Ulrich Apel
+https://kanjivg.tagaini.net/  /  https://github.com/KanjiVG/kanjivg
+
+License: Creative Commons Attribution-ShareAlike 3.0 (CC BY-SA 3.0)
+https://creativecommons.org/licenses/by-sa/3.0/
+
+data/kanji.js は、これらの SVG の <path d> を書き順のとおりに並べ直し、字と読みを添えたものです。
+data/kanji.js contains the path d attributes of these SVG files in stroke order, together with each character and its readings.
+data/kanji.js は KanjiVG の派生物なので、同じ CC BY-SA 3.0 のもとで配布します(アプリ本体のコードとは別のライセンス)。
+data/kanji.js is a derivative of KanjiVG and is distributed under the same CC BY-SA 3.0 (separately from the app's own code).
+出典表示はアプリの「せってい」画面・プライバシーポリシー・README にあります。/ Attribution is shown in the app's Settings screen, the privacy policy and the README.

@@ -9,7 +9,7 @@
     return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
   }
   function codeOf(ch){
-    var data = window.MOJI_KANJI1 || [];
+    var data = window.MOJI_KANJI || [];
     for(var i = 0; i < data.length; i++) if(data[i].char === ch) return data[i].code;
     return null;
   }

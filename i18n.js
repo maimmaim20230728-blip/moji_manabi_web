@@ -43,12 +43,14 @@ var ja = {
     privacy:'プライバシーポリシー',
     credit:'アプリ開発：介護と支援の相談どころ そよぎ',
     srcLabel:'書き順のデータ:',
-    srcShare:'この アプリの 書き順データも、同じ ライセンスです。'
+    srcShare:'この アプリの 書き順データも、同じ ライセンスです。',
+    srcGrade:'入れた字と 年ごとの 分け方: 小学校学習指導要領(平成29年告示)の 漢字の配当表',
+    srcReading:'読み(音・訓 1つずつ): 常用漢字表(平成22年内閣告示)を もとに しています。'
   },
   screen: {
     home: {
       title:'書き順のおさらい',
-      lead:'小学校で習う漢字を、書き順の とおりに ゆびで なぞります。',
+      lead:'小学校で習う漢字1026字を、書き順の とおりに ゆびで なぞります。',
       btnList:'漢字を なぞる',
       btnToday:'きょう やった字',
       hint:'できたか どうかの 判定は しません。点数も 出ません。すきな字を、すきなだけ。',
@@ -56,8 +58,14 @@ var ja = {
     },
     list: {
       title:'なぞる字を えらぶ',
-      sub:'小学校で習う漢字のうち、はじめの80字',
-      noData:'書き順のデータが ありません。'
+      sub:'小学校で習う漢字1026字を、習う年ごとに 分けて 並べています。',
+      noData:'書き順のデータが ありません。',
+      gradesLabel:'習う年',
+      grades:['1年','2年','3年','4年','5年','6年'],
+      findLabel:'字を 1つ いれて さがす',
+      findGo:'ひらく',
+      findEmpty:'字を 1つ いれてください。',
+      findNone:'「{c}」は はいっていません。小学校で習う漢字だけです。'
     },
     trace: {
       title:'なぞる',
@@ -123,12 +131,14 @@ var en = {
     privacy:'Privacy policy',
     credit:'Developed by SOYOGI, a care and support consultation service',
     srcLabel:'Stroke order data:',
-    srcShare:'The stroke data in this app is under the same license.'
+    srcShare:'The stroke data in this app is under the same license.',
+    srcGrade:'The kanji and how they are grouped by year: the kanji allocation table in Japan\'s Course of Study for Elementary Schools (2017 notice)',
+    srcReading:'Readings (one On and one Kun each) are based on the Joyo Kanji table (Japanese Cabinet notice, 2010).'
   },
   screen: {
     home: {
       title:'Stroke Order Review',
-      lead:'Trace kanji first taught in Japanese elementary school (a basic level) with your finger, one stroke at a time, in the right order.',
+      lead:'Trace the 1,026 kanji taught in Japanese elementary school (a basic level) with your finger, one stroke at a time, in the right order.',
       btnList:'Trace a kanji',
       btnToday:'Kanji I traced today',
       hint:'Nothing is judged and no score is shown. Any kanji, as many times as you like.',
@@ -136,8 +146,14 @@ var en = {
     },
     list: {
       title:'Choose a kanji to trace',
-      sub:'The first 80 of the kanji taught in Japanese elementary school (a basic level)',
-      noData:'No stroke data is available.'
+      sub:'The 1,026 kanji taught in Japanese elementary school (a basic level), grouped by the year they are taught.',
+      noData:'No stroke data is available.',
+      gradesLabel:'Year taught',
+      grades:['Year 1','Year 2','Year 3','Year 4','Year 5','Year 6'],
+      findLabel:'Find a kanji (type or paste one)',
+      findGo:'Open',
+      findEmpty:'Please enter one kanji.',
+      findNone:'"{c}" is not in this app. It has only the kanji taught in Japanese elementary school.'
     },
     trace: {
       title:'Trace',
@@ -259,12 +275,14 @@ TBL.de = mergeDeep(JSON.parse(JSON.stringify(en)), {
     "privacy": "Datenschutzerklärung",
     "credit": "App-Entwicklung: SOYOGI, ein Ort für Beratung zu Pflege und Unterstützung",
     "srcLabel": "Daten zur Strichfolge:",
-    "srcShare": "Die Strichdaten dieser App stehen unter derselben Lizenz."
+    "srcShare": "Die Strichdaten dieser App stehen unter derselben Lizenz.",
+    "srcGrade": "Enthaltene Kanji und Einteilung nach Jahren: die Zuordnungstabelle der Kanji im japanischen Lehrplan für Grundschulen (Bekanntmachung 2017)",
+    "srcReading": "Die Lesungen (je eine On- und eine Kun-Lesung) beruhen auf der Jōyō-Kanji-Tabelle (Bekanntmachung des japanischen Kabinetts, 2010)."
   },
   "screen": {
     "home": {
       "title": "Kanji-Strichfolge",
-      "lead": "Sie zeichnen Kanji auf Grundniveau (die zuerst in der japanischen Grundschule gelernt werden) mit dem Finger in der richtigen Strichfolge nach.",
+      "lead": "Sie zeichnen die 1.026 Kanji, die in der japanischen Grundschule gelernt werden (Grundniveau), mit dem Finger in der richtigen Strichfolge nach.",
       "btnList": "Kanji nachzeichnen",
       "btnToday": "Heute geübte Kanji",
       "hint": "Es wird nicht beurteilt, ob etwas gelungen ist. Punkte gibt es auch nicht. Beliebige Kanji, so oft Sie möchten.",
@@ -272,8 +290,21 @@ TBL.de = mergeDeep(JSON.parse(JSON.stringify(en)), {
     },
     "list": {
       "title": "Kanji zum Nachzeichnen auswählen",
-      "sub": "Die ersten 80 der Kanji, die in der japanischen Grundschule gelernt werden (Grundniveau)",
-      "noData": "Es sind keine Daten zur Strichfolge vorhanden."
+      "sub": "Die 1.026 Kanji der japanischen Grundschule (Grundniveau), geordnet nach dem Jahr, in dem sie gelernt werden.",
+      "noData": "Es sind keine Daten zur Strichfolge vorhanden.",
+      "gradesLabel": "Lernjahr",
+      "grades": [
+        "Klasse 1",
+        "Klasse 2",
+        "Klasse 3",
+        "Klasse 4",
+        "Klasse 5",
+        "Klasse 6"
+      ],
+      "findLabel": "Kanji suchen (eines eingeben oder einfügen)",
+      "findGo": "Öffnen",
+      "findEmpty": "Bitte geben Sie ein Kanji ein.",
+      "findNone": "„{c}“ ist in dieser App nicht enthalten. Sie enthält nur die Kanji der japanischen Grundschule."
     },
     "trace": {
       "title": "Nachzeichnen",
@@ -392,12 +423,14 @@ TBL.fr = mergeDeep(JSON.parse(JSON.stringify(en)), {
     "privacy": "Politique de confidentialité",
     "credit": "Application développée par SOYOGI, espace de conseil pour les soins et l'accompagnement",
     "srcLabel": "Données de l'ordre des traits :",
-    "srcShare": "Les données de traits de cette application sont sous la même licence."
+    "srcShare": "Les données de traits de cette application sont sous la même licence.",
+    "srcGrade": "Kanji retenus et répartition par année : la table de répartition des kanji du programme officiel de l'école primaire au Japon (publié en 2017)",
+    "srcReading": "Lectures (une on et une kun pour chaque kanji) : d'après la table des kanji d'usage courant (Jōyō kanji, avis du Cabinet japonais, 2010)."
   },
   "screen": {
     "home": {
       "title": "Revoir les traits",
-      "lead": "Tracez avec le doigt des kanji de niveau de base (les premiers appris à l'école primaire au Japon), en suivant l'ordre des traits.",
+      "lead": "Tracez avec le doigt les 1 026 kanji appris à l'école primaire au Japon (niveau de base), en suivant l'ordre des traits.",
       "btnList": "Tracer un kanji",
       "btnToday": "Kanji tracés aujourd'hui",
       "hint": "Rien n'est évalué et aucun score ne s'affiche. Les kanji que vous aimez, autant que vous le voulez.",
@@ -405,8 +438,21 @@ TBL.fr = mergeDeep(JSON.parse(JSON.stringify(en)), {
     },
     "list": {
       "title": "Choisir un kanji à tracer",
-      "sub": "Les 80 premiers kanji appris à l'école primaire au Japon (niveau de base)",
-      "noData": "Aucune donnée d'ordre des traits."
+      "sub": "Les 1 026 kanji appris à l'école primaire au Japon (niveau de base), classés selon l'année où on les apprend.",
+      "noData": "Aucune donnée d'ordre des traits.",
+      "gradesLabel": "Année d'apprentissage",
+      "grades": [
+        "1re année",
+        "2e année",
+        "3e année",
+        "4e année",
+        "5e année",
+        "6e année"
+      ],
+      "findLabel": "Chercher un kanji (en saisir ou en coller un)",
+      "findGo": "Ouvrir",
+      "findEmpty": "Saisissez un kanji.",
+      "findNone": "« {c} » ne figure pas dans cette application. Elle ne contient que les kanji appris à l'école primaire au Japon."
     },
     "trace": {
       "title": "Tracer",
@@ -525,12 +571,14 @@ TBL.es = mergeDeep(JSON.parse(JSON.stringify(en)), {
     "privacy": "Política de privacidad",
     "credit": "Desarrollado por SOYOGI, servicio de consulta sobre cuidados y apoyo",
     "srcLabel": "Datos del orden de trazos:",
-    "srcShare": "Los datos de trazos de esta app tienen la misma licencia."
+    "srcShare": "Los datos de trazos de esta app tienen la misma licencia.",
+    "srcGrade": "Kanji incluidos y su agrupación por año: la tabla de asignación de kanji del plan de estudios oficial de primaria de Japón (aviso de 2017)",
+    "srcReading": "Lecturas (una on y una kun de cada kanji): basadas en la tabla de kanji de uso común (Jōyō kanji, aviso del Gabinete de Japón, 2010)."
   },
   "screen": {
     "home": {
       "title": "Repaso de trazos",
-      "lead": "Trazar con el dedo, siguiendo el orden de los trazos, kanji de nivel básico (los primeros que se aprenden en la escuela primaria de Japón).",
+      "lead": "Trazar con el dedo, siguiendo el orden de los trazos, los 1026 kanji que se aprenden en la escuela primaria de Japón (nivel básico).",
       "btnList": "Trazar un kanji",
       "btnToday": "Kanji trazados hoy",
       "hint": "No se evalúa si sale bien o no. Tampoco hay puntuación. Cualquier kanji, tantas veces como se quiera.",
@@ -538,8 +586,21 @@ TBL.es = mergeDeep(JSON.parse(JSON.stringify(en)), {
     },
     "list": {
       "title": "Elegir un kanji para trazar",
-      "sub": "Los primeros 80 kanji que se aprenden en la escuela primaria de Japón (nivel básico)",
-      "noData": "No hay datos del orden de trazos."
+      "sub": "Los 1026 kanji que se aprenden en la escuela primaria de Japón (nivel básico), agrupados por el año en que se aprenden.",
+      "noData": "No hay datos del orden de trazos.",
+      "gradesLabel": "Año en que se aprenden",
+      "grades": [
+        "Año 1",
+        "Año 2",
+        "Año 3",
+        "Año 4",
+        "Año 5",
+        "Año 6"
+      ],
+      "findLabel": "Buscar un kanji (escribir o pegar uno)",
+      "findGo": "Abrir",
+      "findEmpty": "Hay que escribir un kanji.",
+      "findNone": "«{c}» no está en esta app. Solo tiene los kanji que se aprenden en la escuela primaria de Japón."
     },
     "trace": {
       "title": "Trazar",
@@ -658,12 +719,14 @@ TBL.it = mergeDeep(JSON.parse(JSON.stringify(en)), {
     "privacy": "Informativa sulla privacy",
     "credit": "App sviluppata da SOYOGI, servizio di consulenza su assistenza e sostegno",
     "srcLabel": "Dati sull'ordine dei tratti:",
-    "srcShare": "Anche i dati dei tratti di questa app hanno la stessa licenza."
+    "srcShare": "Anche i dati dei tratti di questa app hanno la stessa licenza.",
+    "srcGrade": "Kanji inclusi e divisione per anno: la tabella di assegnazione dei kanji delle indicazioni ufficiali per la scuola elementare in Giappone (2017)",
+    "srcReading": "Letture (una on e una kun per ciascun kanji): basate sulla tabella dei kanji di uso comune (Jōyō kanji, avviso del Consiglio dei ministri giapponese, 2010)."
   },
   "screen": {
     "home": {
       "title": "Ripasso dei tratti",
-      "lead": "Ricalchi con il dito kanji di livello base (i primi insegnati alla scuola elementare in Giappone), un tratto alla volta, seguendo l'ordine di scrittura.",
+      "lead": "Ricalchi con il dito i 1026 kanji insegnati alla scuola elementare in Giappone (livello base), un tratto alla volta, seguendo l'ordine di scrittura.",
       "btnList": "Ricalca un kanji",
       "btnToday": "Kanji ricalcati oggi",
       "hint": "Non viene valutato se è venuto bene o no. Non ci sono punteggi. I kanji che preferisce, quante volte vuole.",
@@ -671,8 +734,21 @@ TBL.it = mergeDeep(JSON.parse(JSON.stringify(en)), {
     },
     "list": {
       "title": "Scelga un kanji da ricalcare",
-      "sub": "I primi 80 kanji insegnati alla scuola elementare in Giappone (livello base)",
-      "noData": "Non ci sono dati sull'ordine dei tratti."
+      "sub": "I 1026 kanji insegnati alla scuola elementare in Giappone (livello base), divisi per l'anno in cui si imparano.",
+      "noData": "Non ci sono dati sull'ordine dei tratti.",
+      "gradesLabel": "Anno in cui si imparano",
+      "grades": [
+        "Anno 1",
+        "Anno 2",
+        "Anno 3",
+        "Anno 4",
+        "Anno 5",
+        "Anno 6"
+      ],
+      "findLabel": "Cerchi un kanji (ne scriva o incolli uno)",
+      "findGo": "Apri",
+      "findEmpty": "Scriva un kanji.",
+      "findNone": "«{c}» non è in questa app. Contiene solo i kanji insegnati alla scuola elementare in Giappone."
     },
     "trace": {
       "title": "Ricalca",
@@ -791,12 +867,14 @@ TBL.pt = mergeDeep(JSON.parse(JSON.stringify(en)), {
     "privacy": "Política de privacidade",
     "credit": "Desenvolvimento da app: SOYOGI, serviço de consulta sobre cuidados e apoio",
     "srcLabel": "Dados da ordem dos traços:",
-    "srcShare": "Os dados dos traços desta app têm a mesma licença."
+    "srcShare": "Os dados dos traços desta app têm a mesma licença.",
+    "srcGrade": "Kanji incluídos e divisão por ano: a tabela de distribuição dos kanji do programa oficial da escola primária no Japão (publicado em 2017)",
+    "srcReading": "Leituras (uma on e uma kun de cada kanji): com base na tabela de kanji de uso comum (Jōyō kanji, aviso do Conselho de Ministros do Japão, 2010)."
   },
   "screen": {
     "home": {
       "title": "Revisão dos traços",
-      "lead": "Traçar com o dedo kanji de nível básico (os primeiros aprendidos na escola primária no Japão), seguindo a ordem dos traços.",
+      "lead": "Traçar com o dedo os 1026 kanji aprendidos na escola primária no Japão (nível básico), seguindo a ordem dos traços.",
       "btnList": "Traçar kanji",
       "btnToday": "Kanji traçados hoje",
       "hint": "Não há avaliação de acerto nem pontuação. O kanji que quiser, quantas vezes quiser.",
@@ -804,8 +882,21 @@ TBL.pt = mergeDeep(JSON.parse(JSON.stringify(en)), {
     },
     "list": {
       "title": "Escolher um kanji para traçar",
-      "sub": "Os primeiros 80 kanji aprendidos na escola primária no Japão (nível básico)",
-      "noData": "Não há dados da ordem dos traços."
+      "sub": "Os 1026 kanji aprendidos na escola primária no Japão (nível básico), agrupados pelo ano em que se aprendem.",
+      "noData": "Não há dados da ordem dos traços.",
+      "gradesLabel": "Ano em que se aprendem",
+      "grades": [
+        "1.º ano",
+        "2.º ano",
+        "3.º ano",
+        "4.º ano",
+        "5.º ano",
+        "6.º ano"
+      ],
+      "findLabel": "Procurar um kanji (escrever ou colar um)",
+      "findGo": "Abrir",
+      "findEmpty": "Escrever um kanji.",
+      "findNone": "«{c}» não está nesta app. Só tem os kanji aprendidos na escola primária no Japão."
     },
     "trace": {
       "title": "Traçar",
@@ -924,12 +1015,14 @@ TBL.nl = mergeDeep(JSON.parse(JSON.stringify(en)), {
     "privacy": "Privacybeleid",
     "credit": "App ontwikkeld door SOYOGI, een adviespunt voor zorg en ondersteuning",
     "srcLabel": "Gegevens over de schrijfvolgorde:",
-    "srcShare": "De streekgegevens in deze app vallen onder dezelfde licentie."
+    "srcShare": "De streekgegevens in deze app vallen onder dezelfde licentie.",
+    "srcGrade": "Opgenomen kanji en indeling per jaar: de tabel met de verdeling van de kanji uit het Japanse leerplan voor de basisschool (bekendmaking 2017)",
+    "srcReading": "Lezingen (één on- en één kun-lezing per kanji): gebaseerd op de Jōyō-kanjitabel (bekendmaking van het Japanse kabinet, 2010)."
   },
   "screen": {
     "home": {
       "title": "Schrijfvolgorde",
-      "lead": "Trek kanji van basisniveau (die op de Japanse basisschool als eerste worden geleerd) met uw vinger over, in de juiste schrijfvolgorde.",
+      "lead": "Trek de 1026 kanji die op de Japanse basisschool worden geleerd (basisniveau) met uw vinger over, in de juiste schrijfvolgorde.",
       "btnList": "Kanji overtrekken",
       "btnToday": "Vandaag overgetrokken kanji",
       "hint": "Er wordt niet beoordeeld of het goed is, en er zijn geen punten. Elke kanji die u wilt, zo vaak als u wilt.",
@@ -937,8 +1030,21 @@ TBL.nl = mergeDeep(JSON.parse(JSON.stringify(en)), {
     },
     "list": {
       "title": "Kies een kanji om over te trekken",
-      "sub": "De eerste 80 kanji die op de Japanse basisschool worden geleerd (basisniveau)",
-      "noData": "Er zijn geen gegevens over de schrijfvolgorde."
+      "sub": "De 1026 kanji die op de Japanse basisschool worden geleerd (basisniveau), ingedeeld naar het jaar waarin ze worden geleerd.",
+      "noData": "Er zijn geen gegevens over de schrijfvolgorde.",
+      "gradesLabel": "Jaar waarin ze worden geleerd",
+      "grades": [
+        "Jaar 1",
+        "Jaar 2",
+        "Jaar 3",
+        "Jaar 4",
+        "Jaar 5",
+        "Jaar 6"
+      ],
+      "findLabel": "Kanji zoeken (typ of plak er één)",
+      "findGo": "Openen",
+      "findEmpty": "Voer één kanji in.",
+      "findNone": "‘{c}’ staat niet in deze app. Er staan alleen kanji in die op de Japanse basisschool worden geleerd."
     },
     "trace": {
       "title": "Overtrekken",
@@ -1057,12 +1163,14 @@ TBL.sv = mergeDeep(JSON.parse(JSON.stringify(en)), {
     "privacy": "Integritetspolicy",
     "credit": "Apputveckling: SOYOGI, en plats för rådgivning om omsorg och stöd",
     "srcLabel": "Data för skrivordning:",
-    "srcShare": "Streckdata i den här appen har samma licens."
+    "srcShare": "Streckdata i den här appen har samma licens.",
+    "srcGrade": "Vilka kanji som ingår och indelningen per år: tabellen över kanji i den japanska läroplanen för grundskolan (kungjord 2017)",
+    "srcReading": "Läsningar (en on- och en kun-läsning per kanji): bygger på tabellen över Jōyō-kanji (den japanska regeringens kungörelse, 2010)."
   },
   "screen": {
     "home": {
       "title": "Streckordningen igen",
-      "lead": "Spåra kanji från den japanska grundskolan med fingret, ett drag i taget, i rätt skrivordning.",
+      "lead": "Spåra de 1 026 kanji som lärs ut i den japanska grundskolan (grundnivå) med fingret, ett drag i taget, i rätt skrivordning.",
       "btnList": "Spåra ett kanji",
       "btnToday": "Kanji jag spårat idag",
       "hint": "Inget bedöms och inga poäng visas. Vilka kanji du vill, så många gånger du vill.",
@@ -1070,8 +1178,21 @@ TBL.sv = mergeDeep(JSON.parse(JSON.stringify(en)), {
     },
     "list": {
       "title": "Välj ett kanji att spåra",
-      "sub": "De första 80 kanji som lärs ut i den japanska grundskolan",
-      "noData": "Det finns ingen data för skrivordningen."
+      "sub": "De 1 026 kanji som lärs ut i den japanska grundskolan (grundnivå), ordnade efter året då de lärs ut.",
+      "noData": "Det finns ingen data för skrivordningen.",
+      "gradesLabel": "År då de lärs ut",
+      "grades": [
+        "Årskurs 1",
+        "Årskurs 2",
+        "Årskurs 3",
+        "Årskurs 4",
+        "Årskurs 5",
+        "Årskurs 6"
+      ],
+      "findLabel": "Sök ett kanji (skriv eller klistra in ett)",
+      "findGo": "Öppna",
+      "findEmpty": "Skriv ett kanji.",
+      "findNone": "”{c}” finns inte i den här appen. Den har bara kanji som lärs ut i den japanska grundskolan."
     },
     "trace": {
       "title": "Spåra",
@@ -1190,12 +1311,14 @@ TBL.ko = mergeDeep(JSON.parse(JSON.stringify(en)), {
     "privacy": "개인정보 처리방침",
     "credit": "앱 개발: 돌봄과 지원 상담소 SOYOGI",
     "srcLabel": "필순 데이터:",
-    "srcShare": "이 앱의 필순 데이터도 같은 라이선스를 따라요."
+    "srcShare": "이 앱의 필순 데이터도 같은 라이선스를 따라요.",
+    "srcGrade": "넣은 한자와 학년별 구분: 일본 초등학교 학습지도요령(2017년 고시)의 학년별 한자 배당표",
+    "srcReading": "읽기(음독·훈독 하나씩): 일본 상용한자표(2010년 내각 고시)를 바탕으로 했어요."
   },
   "screen": {
     "home": {
       "title": "필순 다시 보기",
-      "lead": "일본 초등학교에서 배우는 한자를 필순대로 손가락으로 따라 써요.",
+      "lead": "일본 초등학교에서 배우는 한자 1,026자를 필순대로 손가락으로 따라 써요.",
       "btnList": "한자 따라 쓰기",
       "btnToday": "오늘 쓴 글자",
       "hint": "잘했는지 판정하지 않아요. 점수도 나오지 않아요. 좋아하는 글자를 원하는 만큼.",
@@ -1203,8 +1326,21 @@ TBL.ko = mergeDeep(JSON.parse(JSON.stringify(en)), {
     },
     "list": {
       "title": "따라 쓸 글자 고르기",
-      "sub": "일본 초등학교에서 배우는 한자 중 처음 80자",
-      "noData": "필순 데이터가 없어요."
+      "sub": "일본 초등학교에서 배우는 한자 1,026자를 배우는 학년별로 나누어 두었어요.",
+      "noData": "필순 데이터가 없어요.",
+      "gradesLabel": "배우는 학년",
+      "grades": [
+        "1학년",
+        "2학년",
+        "3학년",
+        "4학년",
+        "5학년",
+        "6학년"
+      ],
+      "findLabel": "한자 한 글자를 넣어서 찾기",
+      "findGo": "열기",
+      "findEmpty": "한자를 한 글자 넣어 주세요.",
+      "findNone": "'{c}'은(는) 이 앱에 없어요. 일본 초등학교에서 배우는 한자만 있어요."
     },
     "trace": {
       "title": "따라 쓰기",
@@ -1323,12 +1459,14 @@ TBL.zh = mergeDeep(JSON.parse(JSON.stringify(en)), {
     "privacy": "隐私政策",
     "credit": "应用开发：护理与支援咨询处 SOYOGI",
     "srcLabel": "笔顺数据：",
-    "srcShare": "本应用的笔顺数据也采用相同的许可。"
+    "srcShare": "本应用的笔顺数据也采用相同的许可。",
+    "srcGrade": "收录的字及按年级的划分：日本《小学学习指导要领》（2017年告示）中的各年级汉字分配表",
+    "srcReading": "读音（音读、训读各一个）：依据日本《常用汉字表》（2010年内阁告示）。"
   },
   "screen": {
     "home": {
       "title": "笔顺复习",
-      "lead": "按照笔顺，用手指描日本小学所学的汉字。",
+      "lead": "按照笔顺，用手指描日本小学所学的1026个汉字。",
       "btnList": "描汉字",
       "btnToday": "今天描过的字",
       "hint": "不判断写得对不对，也没有分数。喜欢的字，想描多少次都可以。",
@@ -1336,8 +1474,21 @@ TBL.zh = mergeDeep(JSON.parse(JSON.stringify(en)), {
     },
     "list": {
       "title": "选择要描的字",
-      "sub": "日本小学所学汉字中的前80个",
-      "noData": "没有笔顺数据。"
+      "sub": "日本小学所学的1026个汉字，按学习的年级分开排列。",
+      "noData": "没有笔顺数据。",
+      "gradesLabel": "学习的年级",
+      "grades": [
+        "1年级",
+        "2年级",
+        "3年级",
+        "4年级",
+        "5年级",
+        "6年级"
+      ],
+      "findLabel": "输入一个字来查找",
+      "findGo": "打开",
+      "findEmpty": "请输入一个字。",
+      "findNone": "“{c}”不在本应用中。这里只有日本小学所学的汉字。"
     },
     "trace": {
       "title": "描字",
@@ -1456,12 +1607,14 @@ TBL.ar = mergeDeep(JSON.parse(JSON.stringify(en)), {
     "privacy": "سياسة الخصوصية",
     "credit": "تطوير التطبيق: SOYOGI، مكان للاستشارة في الرعاية والدعم",
     "srcLabel": "بيانات ترتيب الخطوط:",
-    "srcShare": "بيانات الخطوط في هذا التطبيق متاحة بالترخيص نفسه أيضًا."
+    "srcShare": "بيانات الخطوط في هذا التطبيق متاحة بالترخيص نفسه أيضًا.",
+    "srcGrade": "الحروف المدرجة وتقسيمها حسب السنة: جدول توزيع الكانجي في منهج المدرسة الابتدائية في اليابان (إعلان 2017)",
+    "srcReading": "القراءات (قراءة أون وقراءة كون لكل حرف): مبنية على جدول الكانجي الشائعة الاستخدام (جويو كانجي، إعلان مجلس الوزراء الياباني، 2010)."
   },
   "screen": {
     "home": {
       "title": "مراجعة ترتيب الخطوط",
-      "lead": "تتبّع بإصبعك حروف كانجي من المستوى الأساسي (أول ما يُدرَّس في المدرسة الابتدائية في اليابان)، بحسب ترتيب الخطوط.",
+      "lead": "تتبّع بإصبعك حروف الكانجي الـ1026 التي تُدرَّس في المدرسة الابتدائية في اليابان (المستوى الأساسي)، بحسب ترتيب الخطوط.",
       "btnList": "تتبّع حرف كانجي",
       "btnToday": "حروف اليوم",
       "hint": "لا يوجد حكم على الصواب أو الخطأ، ولا تظهر أي درجات. أي حرف تحبه، بقدر ما تحب.",
@@ -1469,8 +1622,21 @@ TBL.ar = mergeDeep(JSON.parse(JSON.stringify(en)), {
     },
     "list": {
       "title": "اختر حرفًا لتتبّعه",
-      "sub": "أول 80 حرفًا من حروف الكانجي التي تُدرَّس في المدرسة الابتدائية في اليابان (المستوى الأساسي)",
-      "noData": "لا توجد بيانات لترتيب الخطوط."
+      "sub": "حروف الكانجي الـ1026 التي تُدرَّس في المدرسة الابتدائية في اليابان (المستوى الأساسي)، مقسّمة حسب السنة التي تُدرَّس فيها.",
+      "noData": "لا توجد بيانات لترتيب الخطوط.",
+      "gradesLabel": "سنة الدراسة",
+      "grades": [
+        "الصف 1",
+        "الصف 2",
+        "الصف 3",
+        "الصف 4",
+        "الصف 5",
+        "الصف 6"
+      ],
+      "findLabel": "ابحث عن حرف كانجي (اكتب حرفًا واحدًا أو الصقه)",
+      "findGo": "فتح",
+      "findEmpty": "من فضلك اكتب حرفًا واحدًا.",
+      "findNone": "«{c}» غير موجود في هذا التطبيق. فيه فقط حروف الكانجي التي تُدرَّس في المدرسة الابتدائية في اليابان."
     },
     "trace": {
       "title": "تتبّع",

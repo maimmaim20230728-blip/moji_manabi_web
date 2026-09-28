@@ -9,7 +9,7 @@
      変えたら README の「シェルの変更点」に書く */
 (function(){
 
-var VER = '0.4.2';               // 🔴 更新のたびに上げる(build.gradle の versionName / sw.js の CACHE と一緒に)
+var VER = '0.5.0';               // 🔴 更新のたびに上げる(build.gradle の versionName / sw.js の CACHE と一緒に)
 var APP_KEY = 'moji_manabi';        // バックアップの識別(別アプリのファイルを読まない)
 var LS = 'moji.';
 var LS_PREF = LS + 'pref.v1';
@@ -65,7 +65,8 @@ var I18N_MAP = {
   'lbl-fs':'set.fs', 'lbl-theme':'set.theme', 'lbl-bgm':'set.bgm', 'lbl-sound':'set.sound',
   'bk-hint':'set.bkHint', 'bk-export':'set.bkExport', 'bk-import':'set.bkImport',
   'set-note':'set.note', 'link-privacy':'set.privacy', 'about-credit':'set.credit',
-  'set-src-label':'set.srcLabel', 'set-src-share':'set.srcShare'   // 書き順データの出典(せってい画面の #set-app-rows)
+  'set-src-label':'set.srcLabel', 'set-src-share':'set.srcShare',   // 書き順データの出典(せってい画面の #set-app-rows)
+  'set-src-grade':'set.srcGrade', 'set-src-reading':'set.srcReading'   // 入れた字と年ごとの分け方・読みの出典(2026-09-29)
 };
 function applyI18n(){
   for(var id in I18N_MAP){ var e = $(id); if(e) e.textContent = T(I18N_MAP[id]); }

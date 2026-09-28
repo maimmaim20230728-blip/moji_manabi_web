@@ -1,6 +1,8 @@
 'use strict';
 /* 画面: なぞる(1字)
-   ・list/today 画面が api.save('cur', code) に置いた字を、data/kanji1.js(window.MOJI_KANJI1)から引く
+   ・list/today 画面が api.save('cur', code) に置いた字を、data/kanji.js(window.MOJI_KANJI・1026字)から引く
+   ・「つぎの字へ」は同じ年(grade)の中で配当表の順に進む(1年の80字なら前と同じ順)。
+     その年の最後の字のあとは、同じ年の最初の字に戻る(ほかの年へは移らない・「おわり」の知らせや数は出さない。README に記載)
    ・SVG(viewBox 0 0 109 109・KanjiVG座標)に全画を薄い線で描き、いまの画だけ stroke-dasharray のアニメで1画ずつ動かす
    ・その上に canvas を重ねて ゆびで なぞれる(判定はしない。「つぎの画」で進む)
    ・読み上げ = api.speak(画面の順に 音、訓 を続けて読む。例「サン、やま」。読みが無ければ字そのもの。日本語 ja-JP)
@@ -17,7 +19,7 @@
     return (typeof document.createElementNS === 'function') ? document.createElementNS(NS, tag) : document.createElement(tag);
   }
   function findKanji(code){
-    var data = window.MOJI_KANJI1 || [];
+    var data = window.MOJI_KANJI || [];
     for(var i = 0; i < data.length; i++) if(data[i].code === code) return { k: data[i], i: i };
     return null;
   }
@@ -215,8 +217,9 @@
       var nextCharB = api.el('button', 'btn primary', T('screen.trace.nextChar') + ' ' + FWD);
       var toListB = api.el('button', 'btn', T('screen.trace.toList'));
       api.Tap.bind(nextCharB, function(){
-        var data = window.MOJI_KANJI1 || [];
-        var n = data[(found.i + 1) % data.length];
+        /* 同じ年の中で次の字。年の最後の字の次は、同じ年の最初の字(% で戻る) */
+        var data = (window.MOJI_KANJI || []).filter(function(x){ return x.grade === found.k.grade; });
+        var n = data[(data.indexOf(found.k) + 1) % data.length];
         if(n){ api.save('cur', n.code); api.go('trace'); }
       });
       api.Tap.bind(toListB, function(){ api.go('list'); });
