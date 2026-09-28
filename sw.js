@@ -1,9 +1,9 @@
 'use strict';
-/* 文字の学び直し(仮) Service Worker
+/* 書き順のおさらい・そよぎ Service Worker
    ・install時に実行ファイルをprecache / HTMLはnetwork-first / その他はcache-first
    ・開発/検証用ファイル(_始まり)はキャッシュしない
    🔴 更新のたびに CACHE 名を上げる。screens/ に画面を足したら ASSETS にも足す(_check.js が照合) */
-const CACHE = 'moji-v4';
+const CACHE = 'moji-v5';
 const ASSETS = [
   './',
   './index.html',

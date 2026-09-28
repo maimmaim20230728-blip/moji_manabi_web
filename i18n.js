@@ -1,4 +1,4 @@
-/* 文字の学び直し(仮) 多言語テーブル(そよぎアプリ・キット v1・12言語)
+/* 書き順のおさらい・そよぎ 多言語テーブル(そよぎアプリ・キット v1・12言語)
    ・window.MOJI_I18N = { ja, en, de, fr, es, it, pt, nl, sv, ko, zh, ar }
    ・キー構造は全言語で完全一致(_check.js が ja を正として構造・配列要素数を機械照合)
    ・🔴 BUILDER: 文言は ja と en の両方に同じキーで足す。画面固有は screen.<画面id>.* に置く。
@@ -12,7 +12,7 @@
 
 /* ============ ja(正) ============ */
 var ja = {
-  app: { name:'文字の学び直し(仮)', tagline:'×を出さない、今日の分だけの学び直し。' },
+  app: { name:'書き順のおさらい・そよぎ', short:'書き順のおさらい', tagline:'×を出さない、今日の分だけの学び直し。' },
   nav: { home:'ホーム', list:'なぞる', today:'きょう', set:'せってい' },
   common: {
     ok:'OK', cancel:'やめる', save:'ほぞんする', del:'けす', back:'もどる', close:'とじる',
@@ -44,7 +44,7 @@ var ja = {
   },
   screen: {
     home: {
-      title:'文字の学び直し(仮)',
+      title:'書き順のおさらい',
       lead:'小学校で習う漢字を、書き順の とおりに ゆびで なぞります。',
       btnList:'漢字を なぞる',
       btnToday:'きょう やった字',
@@ -87,7 +87,7 @@ var ja = {
 
 /* ============ en ============ */
 var en = {
-  app: { name:'Letters Again - SOYOGI (draft)', tagline:'No wrong marks. Only the practice for today.' },
+  app: { name:'Stroke Order Review - SOYOGI', short:'Stroke Order Review', tagline:'No wrong marks. Only the practice for today.' },
   nav: { home:'Home', list:'Trace', today:'Today', set:'Settings' },
   common: {
     ok:'OK', cancel:'Cancel', save:'Save', del:'Delete', back:'Back', close:'Close',
@@ -119,7 +119,7 @@ var en = {
   },
   screen: {
     home: {
-      title:'Letters Again - SOYOGI (draft)',
+      title:'Stroke Order Review',
       lead:'Trace kanji taught in elementary school with your finger, one stroke at a time, in the right order.',
       btnList:'Trace a kanji',
       btnToday:'Kanji I traced today',
@@ -166,7 +166,8 @@ function mergeDeep(t, s){ for(var k in s){ if(s[k] && typeof s[k] === 'object' &
 /* ---- de: 翻訳 ---- */
 TBL.de = mergeDeep(JSON.parse(JSON.stringify(en)), {
   "app": {
-    "name": "Schriftzeichen neu lernen - SOYOGI (Entwurf)",
+    "name": "Kanji-Strichfolge - SOYOGI",
+    "short": "Kanji-Strichfolge",
     "tagline": "Nichts wird als falsch markiert. Nur das Üben für heute."
   },
   "nav": {
@@ -249,7 +250,7 @@ TBL.de = mergeDeep(JSON.parse(JSON.stringify(en)), {
   },
   "screen": {
     "home": {
-      "title": "Schriftzeichen neu lernen - SOYOGI (Entwurf)",
+      "title": "Kanji-Strichfolge",
       "lead": "Sie zeichnen Kanji, die in der Grundschule gelernt werden, mit dem Finger in der richtigen Strichfolge nach.",
       "btnList": "Kanji nachzeichnen",
       "btnToday": "Heute geübte Kanji",
@@ -293,7 +294,8 @@ TBL.de = mergeDeep(JSON.parse(JSON.stringify(en)), {
 /* ---- fr: 翻訳 ---- */
 TBL.fr = mergeDeep(JSON.parse(JSON.stringify(en)), {
   "app": {
-    "name": "Réapprendre les caractères - SOYOGI (provisoire)",
+    "name": "Revoir les traits - SOYOGI",
+    "short": "Revoir les traits",
     "tagline": "Aucune marque d'erreur. Juste la pratique du jour."
   },
   "nav": {
@@ -376,7 +378,7 @@ TBL.fr = mergeDeep(JSON.parse(JSON.stringify(en)), {
   },
   "screen": {
     "home": {
-      "title": "Réapprendre les caractères - SOYOGI (provisoire)",
+      "title": "Revoir les traits",
       "lead": "Tracez avec le doigt les kanji appris à l'école primaire, en suivant l'ordre des traits.",
       "btnList": "Tracer un kanji",
       "btnToday": "Kanji tracés aujourd'hui",
@@ -420,7 +422,8 @@ TBL.fr = mergeDeep(JSON.parse(JSON.stringify(en)), {
 /* ---- es: 翻訳 ---- */
 TBL.es = mergeDeep(JSON.parse(JSON.stringify(en)), {
   "app": {
-    "name": "Letras de nuevo - SOYOGI (borrador)",
+    "name": "Repaso de trazos - SOYOGI",
+    "short": "Repaso de trazos",
     "tagline": "Sin marcas de error. Solo la práctica de hoy."
   },
   "nav": {
@@ -503,7 +506,7 @@ TBL.es = mergeDeep(JSON.parse(JSON.stringify(en)), {
   },
   "screen": {
     "home": {
-      "title": "Letras de nuevo - SOYOGI (borrador)",
+      "title": "Repaso de trazos",
       "lead": "Trazar con el dedo, siguiendo el orden de los trazos, los kanji que se aprenden en la escuela primaria.",
       "btnList": "Trazar un kanji",
       "btnToday": "Kanji trazados hoy",
@@ -547,7 +550,8 @@ TBL.es = mergeDeep(JSON.parse(JSON.stringify(en)), {
 /* ---- it: 翻訳 ---- */
 TBL.it = mergeDeep(JSON.parse(JSON.stringify(en)), {
   "app": {
-    "name": "Riimparare i caratteri - SOYOGI (bozza)",
+    "name": "Ripasso dei tratti - SOYOGI",
+    "short": "Ripasso dei tratti",
     "tagline": "Nessun segno di errore. Solo il ripasso di oggi."
   },
   "nav": {
@@ -630,7 +634,7 @@ TBL.it = mergeDeep(JSON.parse(JSON.stringify(en)), {
   },
   "screen": {
     "home": {
-      "title": "Riimparare i caratteri - SOYOGI (bozza)",
+      "title": "Ripasso dei tratti",
       "lead": "Ricalchi con il dito i kanji insegnati alla scuola elementare, un tratto alla volta, seguendo l'ordine di scrittura.",
       "btnList": "Ricalca un kanji",
       "btnToday": "Kanji ricalcati oggi",
@@ -674,7 +678,8 @@ TBL.it = mergeDeep(JSON.parse(JSON.stringify(en)), {
 /* ---- pt: 翻訳 ---- */
 TBL.pt = mergeDeep(JSON.parse(JSON.stringify(en)), {
   "app": {
-    "name": "Reaprender as Letras - SOYOGI (provisório)",
+    "name": "Revisão dos traços - SOYOGI",
+    "short": "Revisão dos traços",
     "tagline": "Sem marcas de erro. Só a prática de hoje."
   },
   "nav": {
@@ -757,7 +762,7 @@ TBL.pt = mergeDeep(JSON.parse(JSON.stringify(en)), {
   },
   "screen": {
     "home": {
-      "title": "Reaprender as Letras - SOYOGI (provisório)",
+      "title": "Revisão dos traços",
       "lead": "Traçar com o dedo os kanji aprendidos na escola primária, seguindo a ordem dos traços.",
       "btnList": "Traçar kanji",
       "btnToday": "Kanji traçados hoje",
@@ -801,7 +806,8 @@ TBL.pt = mergeDeep(JSON.parse(JSON.stringify(en)), {
 /* ---- nl: 翻訳 ---- */
 TBL.nl = mergeDeep(JSON.parse(JSON.stringify(en)), {
   "app": {
-    "name": "Tekens opnieuw leren - SOYOGI (concept)",
+    "name": "Schrijfvolgorde - SOYOGI",
+    "short": "Schrijfvolgorde",
     "tagline": "Geen kruisjes voor fouten. Alleen het oefenen van vandaag."
   },
   "nav": {
@@ -884,7 +890,7 @@ TBL.nl = mergeDeep(JSON.parse(JSON.stringify(en)), {
   },
   "screen": {
     "home": {
-      "title": "Tekens opnieuw leren - SOYOGI (concept)",
+      "title": "Schrijfvolgorde",
       "lead": "Trek kanji die op de basisschool worden geleerd met uw vinger over, in de juiste schrijfvolgorde.",
       "btnList": "Kanji overtrekken",
       "btnToday": "Vandaag overgetrokken kanji",
@@ -928,7 +934,8 @@ TBL.nl = mergeDeep(JSON.parse(JSON.stringify(en)), {
 /* ---- sv: 翻訳 ---- */
 TBL.sv = mergeDeep(JSON.parse(JSON.stringify(en)), {
   "app": {
-    "name": "Tecken på nytt - SOYOGI (utkast)",
+    "name": "Streckordningen igen - SOYOGI",
+    "short": "Streckordningen igen",
     "tagline": "Inga felmarkeringar. Bara dagens övning."
   },
   "nav": {
@@ -1011,7 +1018,7 @@ TBL.sv = mergeDeep(JSON.parse(JSON.stringify(en)), {
   },
   "screen": {
     "home": {
-      "title": "Tecken på nytt - SOYOGI (utkast)",
+      "title": "Streckordningen igen",
       "lead": "Spåra kanji från den japanska grundskolan med fingret, ett drag i taget, i rätt skrivordning.",
       "btnList": "Spåra ett kanji",
       "btnToday": "Kanji jag spårat idag",
@@ -1055,7 +1062,8 @@ TBL.sv = mergeDeep(JSON.parse(JSON.stringify(en)), {
 /* ---- ko: 翻訳 ---- */
 TBL.ko = mergeDeep(JSON.parse(JSON.stringify(en)), {
   "app": {
-    "name": "다시 배우는 글자 - SOYOGI (가제)",
+    "name": "필순 다시 보기 - SOYOGI",
+    "short": "필순 다시 보기",
     "tagline": "× 표시 없이, 오늘 할 만큼만 다시 배워요."
   },
   "nav": {
@@ -1138,7 +1146,7 @@ TBL.ko = mergeDeep(JSON.parse(JSON.stringify(en)), {
   },
   "screen": {
     "home": {
-      "title": "다시 배우는 글자 - SOYOGI (가제)",
+      "title": "필순 다시 보기",
       "lead": "일본 초등학교에서 배우는 한자를 필순대로 손가락으로 따라 써요.",
       "btnList": "한자 따라 쓰기",
       "btnToday": "오늘 쓴 글자",
@@ -1182,7 +1190,8 @@ TBL.ko = mergeDeep(JSON.parse(JSON.stringify(en)), {
 /* ---- zh: 翻訳 ---- */
 TBL.zh = mergeDeep(JSON.parse(JSON.stringify(en)), {
   "app": {
-    "name": "重新学写字 - SOYOGI（暂定）",
+    "name": "笔顺复习 - SOYOGI",
+    "short": "笔顺复习",
     "tagline": "不打叉，只重学今天这一点。"
   },
   "nav": {
@@ -1265,7 +1274,7 @@ TBL.zh = mergeDeep(JSON.parse(JSON.stringify(en)), {
   },
   "screen": {
     "home": {
-      "title": "重新学写字 - SOYOGI（暂定）",
+      "title": "笔顺复习",
       "lead": "按照笔顺，用手指描日本小学所学的汉字。",
       "btnList": "描汉字",
       "btnToday": "今天描过的字",
@@ -1309,7 +1318,8 @@ TBL.zh = mergeDeep(JSON.parse(JSON.stringify(en)), {
 /* ---- ar: 翻訳 ---- */
 TBL.ar = mergeDeep(JSON.parse(JSON.stringify(en)), {
   "app": {
-    "name": "الحروف من جديد - SOYOGI (مسودة)",
+    "name": "مراجعة ترتيب الخطوط - SOYOGI",
+    "short": "مراجعة ترتيب الخطوط",
     "tagline": "بلا علامات خطأ. تعلّم من جديد بقدر اليوم فقط."
   },
   "nav": {
@@ -1392,7 +1402,7 @@ TBL.ar = mergeDeep(JSON.parse(JSON.stringify(en)), {
   },
   "screen": {
     "home": {
-      "title": "الحروف من جديد - SOYOGI (مسودة)",
+      "title": "مراجعة ترتيب الخطوط",
       "lead": "تتبّع بإصبعك حروف الكانجي التي تُدرَّس في المدرسة الابتدائية، بحسب ترتيب الخطوط.",
       "btnList": "تتبّع حرف كانجي",
       "btnToday": "حروف اليوم",

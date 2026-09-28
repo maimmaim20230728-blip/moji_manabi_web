@@ -1,4 +1,4 @@
-/* 文字の学び直し(仮) スタイル(そよぎアプリ・キット v1)
+/* 書き順のおさらい・そよぎ スタイル(そよぎアプリ・キット v1)
    ・そよぎブランド4色(明るい緑/水色/白/黒) = 4テーマ(body data-theme)
    ・シェルは縦フレックス(ヘッダー=上固定 / #main=スクロール / ナビ=下固定)。100dvh・特大文字でも下端まで届く
    ・大人の尊厳を保つ落ち着いたトーン。機能色のみ。でか文字・大ボタン(44px以上)・.pressing の沈み込み(tap.js連動)
@@ -225,7 +225,7 @@ input[type="file"].hidden{ display:none; }
 .photo-row{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; width:100%; max-width:420px; margin-top:12px; }
 .photo-file{ display:none; }
 
-/* ======== 文字の学び直し: 漢字の一覧・なぞり(アプリ固有) ======== */
+/* ======== 書き順のおさらい: 漢字の一覧・なぞり(アプリ固有) ======== */
 .kanji-grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(64px, 1fr)); gap:10px; margin:8px 0 16px; }
 .kanji-btn{
   min-height:64px; font-size:1.7em; font-weight:700; font-family:inherit; line-height:1;
