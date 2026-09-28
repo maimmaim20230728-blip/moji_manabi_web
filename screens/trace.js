@@ -56,11 +56,17 @@
       var head = api.el('div', 'trace-head');
       head.appendChild(api.el('div', 'trace-char', k.char));
       var rd = api.el('div', 'trace-readings');
-      rd.appendChild(api.el('div', 'reading', T('screen.trace.on') + '：' + (k.on || T('screen.trace.none'))));
-      rd.appendChild(api.el('div', 'reading', T('screen.trace.kun') + '：' + (k.kun || T('screen.trace.none'))));
-      var sp = api.el('button', 'btn', '🔊 ' + T('screen.trace.speak'));
-      api.Tap.bind(sp, function(){ api.speak(readingOf(k), { lang:'ja', rate:0.9 }); });
-      rd.appendChild(sp);
+      var sep = T('screen.trace.sep');   // ja/zh は全角「：」、ほかは「: 」(fr は「 : 」)
+      rd.appendChild(api.el('div', 'reading', T('screen.trace.on') + sep + (k.on || T('screen.trace.none'))));
+      rd.appendChild(api.el('div', 'reading', T('screen.trace.kun') + sep + (k.kun || T('screen.trace.none'))));
+      /* 読み上げの道が無い端末ではボタンを出さない。Play版(ネイティブ)で声が出せなかったときは知らせる */
+      if(api.canSpeak()){
+        var sp = api.el('button', 'btn', '🔊 ' + T('screen.trace.speak'));
+        api.Tap.bind(sp, function(){
+          api.speak(readingOf(k), { lang:'ja', rate:0.9, onerror: function(){ api.toast(T('screen.trace.noVoice')); } });
+        });
+        rd.appendChild(sp);
+      }
       head.appendChild(rd);
       c.appendChild(head);
 
@@ -100,8 +106,8 @@
       /* ---- canvas(ゆびの線) ---- */
       var ctx = null, drawing = null, cvSize = 0;
       function fit(){
-        var r = stage.getBoundingClientRect ? stage.getBoundingClientRect() : { width:300 };
-        var w = Math.max(1, Math.round(r.width || 300));
+        /* 台の枠(border)の内側 = canvas の表示幅で測る(台の外枠で測ると内部が表示より大きくなり、線が指からずれる) */
+        var w = Math.max(1, Math.round(cv.clientWidth || (cv.getBoundingClientRect ? cv.getBoundingClientRect().width : 0) || 300));
         var dpr = (typeof window !== 'undefined' && window.devicePixelRatio) || 1;
         if(w === cvSize) return;
         cvSize = w;
@@ -174,9 +180,11 @@
       }
 
       /* ---- 操作 ---- */
+      /* 右から左(ar)では「まえ」が右・「つぎ」が左なので、矢印の向きも入れ替える */
+      var BACK = api.rtl ? '▶' : '◀', FWD = api.rtl ? '◀' : '▶';
       var row1 = api.el('div', 'btn-row');
-      var prevB = api.el('button', 'btn', '◀ ' + T('screen.trace.prev'));
-      var nextB = api.el('button', 'btn primary', T('screen.trace.next') + ' ▶');
+      var prevB = api.el('button', 'btn', BACK + ' ' + T('screen.trace.prev'));
+      var nextB = api.el('button', 'btn primary', T('screen.trace.next') + ' ' + FWD);
       var doneB = api.el('button', 'btn primary', '✓ ' + T('screen.trace.done'));
       api.Tap.bind(prevB, function(){ if(idx > 0){ idx--; paint(); } });
       api.Tap.bind(nextB, function(){ if(idx < m - 1){ idx++; paint(); } });
@@ -191,9 +199,13 @@
       row2.appendChild(replayB); row2.appendChild(clearB);
       c.appendChild(row2);
 
-      /* できた → きょうの字に入れる(重複は入れない)。そのあと「つぎの字へ / いちらんへ」を出す */
+      /* できた → きょうの字に入れる(重複は入れない)。そのあと「いれました」の一文と「つぎの字へ / いちらんへ」を出す
+         (トーストだと、出てきたばかりのボタンの上に重なるので、ボタンの上に一文で出す) */
+      var doneMsg = api.el('p', 'trace-done-msg hidden', T('screen.trace.doneToast'));
+      doneMsg.setAttribute('role', 'status');
+      c.appendChild(doneMsg);
       var after = api.el('div', 'btn-row hidden');
-      var nextCharB = api.el('button', 'btn primary', T('screen.trace.nextChar') + ' ▶');
+      var nextCharB = api.el('button', 'btn primary', T('screen.trace.nextChar') + ' ' + FWD);
       var toListB = api.el('button', 'btn', T('screen.trace.toList'));
       api.Tap.bind(nextCharB, function(){
         var data = window.MOJI_KANJI1 || [];
@@ -209,7 +221,7 @@
         if(!t || t.d !== todayKey() || !Array.isArray(t.list)) t = { d: todayKey(), list: [] };
         if(t.list.indexOf(k.char) < 0) t.list.push(k.char);
         if(!api.save('today', t)){ api.toast(T('common.storageFull')); return; }
-        api.toast(T('screen.trace.doneToast'));
+        doneMsg.classList.remove('hidden');
         after.classList.remove('hidden');
         try{ after.scrollIntoView({ block:'nearest' }); }catch(_){}
       });

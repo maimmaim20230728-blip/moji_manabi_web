@@ -10,7 +10,10 @@
   }
   function todayList(api){
     var t = api.load('today', null);
-    return (t && t.d === todayKey() && Array.isArray(t.list)) ? t.list : [];
+    var list = (t && t.d === todayKey() && Array.isArray(t.list)) ? t.list : [];
+    /* よみこんだバックアップが変でも、書き順データにある字(文字列)だけを使う */
+    var chars = (window.MOJI_KANJI1 || []).map(function(k){ return k.char; });
+    return list.filter(function(ch){ return typeof ch === 'string' && chars.indexOf(ch) >= 0; });
   }
   window.SCREENS.register('list', {
     render: function(c, api){

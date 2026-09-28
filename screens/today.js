@@ -18,6 +18,8 @@
       c.appendChild(api.el('h1', 'scr-title', api.T('screen.today.title')));
       var t = api.load('today', null);
       var list = (t && t.d === todayKey() && Array.isArray(t.list)) ? t.list : [];
+      /* よみこんだバックアップが変でも、書き順データにある字(文字列)だけを1回ずつ出す */
+      list = list.filter(function(ch, i){ return typeof ch === 'string' && codeOf(ch) !== null && list.indexOf(ch) === i; });
       c.appendChild(api.el('p', 'hint', api.T('screen.today.hint')));
       if(!list.length){
         c.appendChild(api.el('p', 'empty', api.T('screen.today.empty')));

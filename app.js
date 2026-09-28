@@ -9,7 +9,7 @@
      変えたら README の「シェルの変更点」に書く */
 (function(){
 
-var VER = '0.4.0';               // 🔴 更新のたびに上げる(build.gradle の versionName / sw.js の CACHE と一緒に)
+var VER = '0.4.1';               // 🔴 更新のたびに上げる(build.gradle の versionName / sw.js の CACHE と一緒に)
 var APP_KEY = 'moji_manabi';        // バックアップの識別(別アプリのファイルを読まない)
 var LS = 'moji.';
 var LS_PREF = LS + 'pref.v1';
@@ -64,7 +64,8 @@ var I18N_MAP = {
   'set-h-normal':'set.hNormal', 'set-h-backup':'set.hBackup',
   'lbl-fs':'set.fs', 'lbl-theme':'set.theme', 'lbl-bgm':'set.bgm', 'lbl-sound':'set.sound',
   'bk-hint':'set.bkHint', 'bk-export':'set.bkExport', 'bk-import':'set.bkImport',
-  'set-note':'set.note', 'link-privacy':'set.privacy', 'about-credit':'set.credit'
+  'set-note':'set.note', 'link-privacy':'set.privacy', 'about-credit':'set.credit',
+  'set-src-label':'set.srcLabel', 'set-src-share':'set.srcShare'   // 書き順データの出典(せってい画面の #set-app-rows)
 };
 function applyI18n(){
   for(var id in I18N_MAP){ var e = $(id); if(e) e.textContent = T(I18N_MAP[id]); }
@@ -133,27 +134,45 @@ function el(tag, cls, txt){
   return e;
 }
 
-/* ---- 読み上げ(任意。Play版のWebViewはWeb Speech API非対応なのでネイティブへ橋渡し) ---- */
-var NATIVE_TTS = (function(){
+/* ---- 読み上げ(任意。Play版のWebViewはWeb Speech API非対応なのでネイティブへ橋渡し) ----
+   バンドラ無しなので Capacitor.registerPlugin(@capacitor/core の関数)は WebView に無い。
+   ネイティブ側が入れる Capacitor.Plugins.TextToSpeech を使う(yomu_kaku と同じ形) */
+var ttsCache = { cap:undefined, plugin:null };
+function nativeTts(){
+  var c = null;
+  try{ c = (typeof window !== 'undefined' && window.Capacitor) || null; }catch(_){}
+  if(c === ttsCache.cap) return ttsCache.plugin;
+  ttsCache.cap = c; ttsCache.plugin = null;
   try{
-    var c = window.Capacitor;
-    if(c && typeof c.isNativePlatform === 'function' && c.isNativePlatform() && typeof c.registerPlugin === 'function'){
-      return c.registerPlugin('TextToSpeech');
+    if(c && typeof c.isNativePlatform === 'function' && c.isNativePlatform() &&
+       typeof c.isPluginAvailable === 'function' && c.isPluginAvailable('TextToSpeech')){
+      var p = c.Plugins && c.Plugins.TextToSpeech;
+      if(p && typeof p.speak === 'function') ttsCache.plugin = p;
+      else if(typeof c.registerPlugin === 'function') ttsCache.plugin = c.registerPlugin('TextToSpeech');
     }
-  }catch(_){}
-  return null;
-})();
+  }catch(_){ ttsCache.plugin = null; }
+  return ttsCache.plugin;
+}
+/* 世代番号: 新しく読む/止めるたびに進める。古い読み上げの終わり・失敗は画面へ知らせない
+   (プラグインの stop() は前の speak() の Promise を解決も拒否もせず放置する。speak() は読み終わりで resolve、
+    未初期化・その言語の声が無い・発話エラーで reject) */
+var ttsGen = 0;
 function speak(text, opts){
   if(!text) return false;
   var o = opts || {};
   var tag = TTS_LANG[o.lang || pref.lang] || 'ja-JP';
   var rate = o.rate || 1;
-  if(NATIVE_TTS){
+  var gen = ++ttsGen;
+  var nt = nativeTts();
+  if(nt){
     try{
-      NATIVE_TTS.stop().catch(function(){}).then(function(){
-        NATIVE_TTS.speak({ text:String(text), lang:String(tag), rate:rate, pitch:1.0, volume:1.0 }).catch(function(){});
+      nt.stop().catch(function(){}).then(function(){
+        if(gen !== ttsGen) return;
+        return nt.speak({ text:String(text), lang:String(tag), rate:rate, pitch:1.0, volume:1.0 })
+          .then(function(){ if(gen === ttsGen && o.onend) o.onend(); },
+                function(err){ if(gen === ttsGen && o.onerror) o.onerror(err); });
       });
-    }catch(_){}
+    }catch(_){ if(o.onerror) o.onerror(_); }
     return true;
   }
   if(typeof window === 'undefined' || !('speechSynthesis' in window)) return false;
@@ -170,15 +189,18 @@ function speak(text, opts){
       if(v) u.voice = v;
     }catch(_){}
     if(o.onend) u.onend = o.onend;
+    /* 止めた/次を読んだときの interrupted・canceled は失敗ではない */
+    if(o.onerror) u.onerror = function(ev){ var er = ev && ev.error; if(er === 'interrupted' || er === 'canceled' || gen !== ttsGen) return; o.onerror(er); };
     synth.speak(u);
     return true;
   }catch(_){ return false; }
 }
 function stopSpeak(){
-  try{ if(NATIVE_TTS) NATIVE_TTS.stop().catch(function(){}); }catch(_){}
+  ttsGen++;
+  try{ var nt = nativeTts(); if(nt) nt.stop().catch(function(){}); }catch(_){}
   try{ if(typeof window !== 'undefined' && 'speechSynthesis' in window) window.speechSynthesis.cancel(); }catch(_){}
 }
-function canSpeak(){ return !!(NATIVE_TTS || (typeof window !== 'undefined' && 'speechSynthesis' in window)); }
+function canSpeak(){ return !!(nativeTts() || (typeof window !== 'undefined' && 'speechSynthesis' in window)); }
 /* 無音の振動(Android。iOS Safariでは動かない) */
 function vibrate(pattern){
   try{ if(navigator && typeof navigator.vibrate === 'function') return !!navigator.vibrate(pattern || 60); }catch(_){}

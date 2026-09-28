@@ -60,8 +60,10 @@
     <div class="set-row"><span id="lbl-sound"></span><button id="btn-sound" class="set-btn"></button></div>
 
     <!-- BUILDER: アプリ固有の設定行はここに足す(id は set-app-* で) -->
+    <!-- 書き順データの出典: 文言は app.js の I18N_MAP(set.srcLabel / set.srcShare)。リンクと作者名はどの言語でも同じ -->
     <div id="set-app-rows">
-      <p class="hint">書き順のデータ / Stroke data: <a href="https://kanjivg.tagaini.net/" target="_blank" rel="noopener">KanjiVG</a> (Ulrich Apel, <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noopener">CC BY-SA 3.0</a>)</p>
+      <p class="hint"><span id="set-src-label"></span> <bdi><a href="https://kanjivg.tagaini.net/" target="_blank" rel="noopener">KanjiVG</a> (Ulrich Apel, <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noopener">CC BY-SA 3.0</a>)</bdi></p>
+      <p id="set-src-share" class="hint"></p>
     </div>
 
     <h2 id="set-h-backup" class="sec-h"></h2>

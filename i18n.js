@@ -38,9 +38,11 @@ var ja = {
     bkHint:'あたらしい スマホに うつるときは、「かきだす」で ファイルを ほぞんして、あたらしい スマホで「よみこむ」を おしてください。',
     bkExport:'かきだす', bkImport:'よみこむ',
     exported:'かきだしました ✓', imported:'よみこみました ✓', importFail:'よみこめませんでした',
-    note:'書いたことは すべて この端末の中だけに ほぞんされます。どこにも 送られません。',
+    note:'なぞった字の きろくと せっていは、この端末の中だけに ほぞんされます。どこにも 送られません。',
     privacy:'プライバシーポリシー',
-    credit:'アプリ開発：介護と支援の相談どころ そよぎ'
+    credit:'アプリ開発：介護と支援の相談どころ そよぎ',
+    srcLabel:'書き順のデータ:',
+    srcShare:'この アプリの 書き順データも、同じ ライセンスです。'
   },
   screen: {
     home: {
@@ -60,8 +62,10 @@ var ja = {
       title:'なぞる',
       on:'音',
       kun:'訓',
+      sep:'：',
       none:'なし',
       speak:'よみあげ',
+      noVoice:'よみあげが できませんでした',
       stroke:'{n}画め(ぜんぶで {m}画)',
       how:'うすい線が うごいたら、その上を ゆびで なぞります。',
       last:'さいごの画です。',
@@ -113,9 +117,11 @@ var en = {
     bkHint:'When you move to a new phone, tap "Export" to save a file, then tap "Import" on the new phone.',
     bkExport:'Export', bkImport:'Import',
     exported:'Exported ✓', imported:'Imported ✓', importFail:'Could not import',
-    note:'Everything you write is stored only on this device. Nothing is sent anywhere.',
+    note:'The kanji you traced and your settings are stored only on this device. Nothing is sent anywhere.',
     privacy:'Privacy policy',
-    credit:'Developed by SOYOGI, a care and support consultation service'
+    credit:'Developed by SOYOGI, a care and support consultation service',
+    srcLabel:'Stroke order data:',
+    srcShare:'The stroke data in this app is under the same license.'
   },
   screen: {
     home: {
@@ -135,8 +141,10 @@ var en = {
       title:'Trace',
       on:'On',
       kun:'Kun',
+      sep:': ',
       none:'none',
       speak:'Read aloud',
+      noVoice:'Could not read it aloud',
       stroke:'Stroke {n} of {m}',
       how:'When the light line moves, trace over it with your finger.',
       last:'This is the last stroke.',
@@ -244,9 +252,11 @@ TBL.de = mergeDeep(JSON.parse(JSON.stringify(en)), {
     "exported": "Exportiert ✓",
     "imported": "Importiert ✓",
     "importFail": "Import nicht möglich",
-    "note": "Alles, was Sie schreiben, wird nur auf diesem Gerät gespeichert. Nichts wird irgendwohin gesendet.",
+    "note": "Die nachgezeichneten Kanji und Ihre Einstellungen werden nur auf diesem Gerät gespeichert. Nichts wird irgendwohin gesendet.",
     "privacy": "Datenschutzerklärung",
-    "credit": "App-Entwicklung: SOYOGI, ein Ort für Beratung zu Pflege und Unterstützung"
+    "credit": "App-Entwicklung: SOYOGI, ein Ort für Beratung zu Pflege und Unterstützung",
+    "srcLabel": "Daten zur Strichfolge:",
+    "srcShare": "Die Strichdaten dieser App stehen unter derselben Lizenz."
   },
   "screen": {
     "home": {
@@ -266,15 +276,17 @@ TBL.de = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "title": "Nachzeichnen",
       "on": "On-Lesung",
       "kun": "Kun-Lesung",
+      "sep": ": ",
       "none": "keine",
       "speak": "Vorlesen",
+      "noVoice": "Vorlesen war nicht möglich",
       "stroke": "Strich {n} von {m}",
       "how": "Wenn sich die blasse Linie bewegt, zeichnen Sie sie mit dem Finger nach.",
       "last": "Das ist der letzte Strich.",
       "prev": "Vorheriger Strich",
       "next": "Nächster Strich",
       "replay": "Noch einmal ansehen",
-      "clear": "Nachzeichnung löschen",
+      "clear": "Zeichnung löschen",
       "done": "Fertig",
       "doneToast": "Zu den heutigen Kanji hinzugefügt ✓",
       "nextChar": "Nächstes Kanji",
@@ -372,9 +384,11 @@ TBL.fr = mergeDeep(JSON.parse(JSON.stringify(en)), {
     "exported": "Exporté ✓",
     "imported": "Importé ✓",
     "importFail": "Impossible d'importer",
-    "note": "Tout ce que vous écrivez est enregistré uniquement sur cet appareil. Rien n'est envoyé ailleurs.",
+    "note": "Les kanji tracés et vos réglages sont enregistrés uniquement sur cet appareil. Rien n'est envoyé ailleurs.",
     "privacy": "Politique de confidentialité",
-    "credit": "Application développée par SOYOGI, espace de conseil pour les soins et l'accompagnement"
+    "credit": "Application développée par SOYOGI, espace de conseil pour les soins et l'accompagnement",
+    "srcLabel": "Données de l'ordre des traits :",
+    "srcShare": "Les données de traits de cette application sont sous la même licence."
   },
   "screen": {
     "home": {
@@ -394,8 +408,10 @@ TBL.fr = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "title": "Tracer",
       "on": "On",
       "kun": "Kun",
+      "sep": " : ",
       "none": "aucune",
       "speak": "Lire à voix haute",
+      "noVoice": "Impossible de lire à voix haute",
       "stroke": "Trait {n} sur {m}",
       "how": "Quand la ligne pâle se déplace, repassez dessus avec le doigt.",
       "last": "C'est le dernier trait.",
@@ -500,9 +516,11 @@ TBL.es = mergeDeep(JSON.parse(JSON.stringify(en)), {
     "exported": "Exportado ✓",
     "imported": "Importado ✓",
     "importFail": "No se pudo importar",
-    "note": "Todo lo escrito se guarda solo en este dispositivo. No se envía nada a ningún lugar.",
+    "note": "Los kanji trazados y los ajustes se guardan solo en este dispositivo. No se envía nada a ningún lugar.",
     "privacy": "Política de privacidad",
-    "credit": "Desarrollado por SOYOGI, servicio de consulta sobre cuidados y apoyo"
+    "credit": "Desarrollado por SOYOGI, servicio de consulta sobre cuidados y apoyo",
+    "srcLabel": "Datos del orden de trazos:",
+    "srcShare": "Los datos de trazos de esta app tienen la misma licencia."
   },
   "screen": {
     "home": {
@@ -522,8 +540,10 @@ TBL.es = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "title": "Trazar",
       "on": "On",
       "kun": "Kun",
+      "sep": ": ",
       "none": "ninguna",
       "speak": "Leer en voz alta",
+      "noVoice": "No se pudo leer en voz alta",
       "stroke": "Trazo {n} de {m}",
       "how": "Cuando se mueva la línea tenue, repasarla con el dedo.",
       "last": "Es el último trazo.",
@@ -628,9 +648,11 @@ TBL.it = mergeDeep(JSON.parse(JSON.stringify(en)), {
     "exported": "Esportato ✓",
     "imported": "Importato ✓",
     "importFail": "Impossibile importare",
-    "note": "Tutto ciò che scrive viene salvato solo su questo dispositivo. Non viene inviato da nessuna parte.",
+    "note": "I kanji ricalcati e le impostazioni vengono salvati solo su questo dispositivo. Non viene inviato niente da nessuna parte.",
     "privacy": "Informativa sulla privacy",
-    "credit": "App sviluppata da SOYOGI, servizio di consulenza su assistenza e sostegno"
+    "credit": "App sviluppata da SOYOGI, servizio di consulenza su assistenza e sostegno",
+    "srcLabel": "Dati sull'ordine dei tratti:",
+    "srcShare": "Anche i dati dei tratti di questa app hanno la stessa licenza."
   },
   "screen": {
     "home": {
@@ -650,8 +672,10 @@ TBL.it = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "title": "Ricalca",
       "on": "Lettura on",
       "kun": "Lettura kun",
+      "sep": ": ",
       "none": "nessuna",
       "speak": "Leggi ad alta voce",
+      "noVoice": "Impossibile leggere ad alta voce",
       "stroke": "Tratto {n} di {m}",
       "how": "Quando la linea chiara si muove, ci passi sopra con il dito.",
       "last": "Questo è l'ultimo tratto.",
@@ -756,9 +780,11 @@ TBL.pt = mergeDeep(JSON.parse(JSON.stringify(en)), {
     "exported": "Exportado ✓",
     "imported": "Importado ✓",
     "importFail": "Não foi possível importar",
-    "note": "Tudo o que se escreve fica guardado só neste dispositivo. Nada é enviado para fora.",
+    "note": "Os kanji traçados e os ajustes ficam guardados só neste dispositivo. Nada é enviado para fora.",
     "privacy": "Política de privacidade",
-    "credit": "Desenvolvimento da app: SOYOGI, serviço de consulta sobre cuidados e apoio"
+    "credit": "Desenvolvimento da app: SOYOGI, serviço de consulta sobre cuidados e apoio",
+    "srcLabel": "Dados da ordem dos traços:",
+    "srcShare": "Os dados dos traços desta app têm a mesma licença."
   },
   "screen": {
     "home": {
@@ -778,8 +804,10 @@ TBL.pt = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "title": "Traçar",
       "on": "Leitura on",
       "kun": "Leitura kun",
+      "sep": ": ",
       "none": "nenhuma",
       "speak": "Ler em voz alta",
+      "noVoice": "Não foi possível ler em voz alta",
       "stroke": "Traço {n} de {m}",
       "how": "Quando a linha clara se mover, traçar por cima dela com o dedo.",
       "last": "Este é o último traço.",
@@ -884,9 +912,11 @@ TBL.nl = mergeDeep(JSON.parse(JSON.stringify(en)), {
     "exported": "Geëxporteerd ✓",
     "imported": "Geïmporteerd ✓",
     "importFail": "Kon niet importeren",
-    "note": "Alles wat u schrijft, wordt alleen op dit apparaat bewaard. Er wordt niets verstuurd.",
+    "note": "De overgetrokken kanji en uw instellingen worden alleen op dit apparaat bewaard. Er wordt niets verstuurd.",
     "privacy": "Privacybeleid",
-    "credit": "App ontwikkeld door SOYOGI, een adviespunt voor zorg en ondersteuning"
+    "credit": "App ontwikkeld door SOYOGI, een adviespunt voor zorg en ondersteuning",
+    "srcLabel": "Gegevens over de schrijfvolgorde:",
+    "srcShare": "De streekgegevens in deze app vallen onder dezelfde licentie."
   },
   "screen": {
     "home": {
@@ -906,8 +936,10 @@ TBL.nl = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "title": "Overtrekken",
       "on": "On-lezing",
       "kun": "Kun-lezing",
+      "sep": ": ",
       "none": "geen",
       "speak": "Voorlezen",
+      "noVoice": "Voorlezen lukte niet",
       "stroke": "Streek {n} (in totaal {m})",
       "how": "Als de lichte lijn beweegt, trekt u die met uw vinger over.",
       "last": "Dit is de laatste streek.",
@@ -1012,9 +1044,11 @@ TBL.sv = mergeDeep(JSON.parse(JSON.stringify(en)), {
     "exported": "Exporterat ✓",
     "imported": "Importerat ✓",
     "importFail": "Det gick inte att importera",
-    "note": "Allt du skriver sparas bara på den här enheten. Inget skickas någonstans.",
+    "note": "De kanji du har spårat och dina inställningar sparas bara på den här enheten. Inget skickas någonstans.",
     "privacy": "Integritetspolicy",
-    "credit": "Apputveckling: SOYOGI, en plats för rådgivning om omsorg och stöd"
+    "credit": "Apputveckling: SOYOGI, en plats för rådgivning om omsorg och stöd",
+    "srcLabel": "Data för skrivordning:",
+    "srcShare": "Streckdata i den här appen har samma licens."
   },
   "screen": {
     "home": {
@@ -1034,8 +1068,10 @@ TBL.sv = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "title": "Spåra",
       "on": "On-läsning",
       "kun": "Kun-läsning",
+      "sep": ": ",
       "none": "ingen",
       "speak": "Läs upp",
+      "noVoice": "Det gick inte att läsa upp",
       "stroke": "Drag {n} av {m}",
       "how": "När den ljusa linjen rör sig, följ den med fingret.",
       "last": "Det här är det sista draget.",
@@ -1140,9 +1176,11 @@ TBL.ko = mergeDeep(JSON.parse(JSON.stringify(en)), {
     "exported": "내보냈어요 ✓",
     "imported": "가져왔어요 ✓",
     "importFail": "가져오지 못했어요",
-    "note": "쓴 내용은 모두 이 기기 안에만 저장돼요. 어디에도 보내지 않아요.",
+    "note": "따라 쓴 글자 기록과 설정은 이 기기 안에만 저장돼요. 어디에도 보내지 않아요.",
     "privacy": "개인정보 처리방침",
-    "credit": "앱 개발: 돌봄과 지원 상담소 SOYOGI"
+    "credit": "앱 개발: 돌봄과 지원 상담소 SOYOGI",
+    "srcLabel": "필순 데이터:",
+    "srcShare": "이 앱의 필순 데이터도 같은 라이선스를 따라요."
   },
   "screen": {
     "home": {
@@ -1162,8 +1200,10 @@ TBL.ko = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "title": "따라 쓰기",
       "on": "음독",
       "kun": "훈독",
+      "sep": ": ",
       "none": "없음",
       "speak": "읽어 주기",
+      "noVoice": "읽어 주지 못했어요",
       "stroke": "{n}번째 획 (모두 {m}획)",
       "how": "연한 선이 움직이면 그 위를 손가락으로 따라 써요.",
       "last": "마지막 획이에요.",
@@ -1268,9 +1308,11 @@ TBL.zh = mergeDeep(JSON.parse(JSON.stringify(en)), {
     "exported": "已导出 ✓",
     "imported": "已导入 ✓",
     "importFail": "无法导入",
-    "note": "写下的内容都只保存在这台设备里，不会发送到任何地方。",
+    "note": "描过的字的记录和设置只保存在这台设备里，不会发送到任何地方。",
     "privacy": "隐私政策",
-    "credit": "应用开发：护理与支援咨询处 SOYOGI"
+    "credit": "应用开发：护理与支援咨询处 SOYOGI",
+    "srcLabel": "笔顺数据：",
+    "srcShare": "本应用的笔顺数据也采用相同的许可。"
   },
   "screen": {
     "home": {
@@ -1290,8 +1332,10 @@ TBL.zh = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "title": "描字",
       "on": "音读",
       "kun": "训读",
+      "sep": "：",
       "none": "无",
       "speak": "朗读",
+      "noVoice": "无法朗读",
       "stroke": "第{n}画（共{m}画）",
       "how": "浅色的线动起来后，用手指沿着它描。",
       "last": "这是最后一画。",
@@ -1396,9 +1440,11 @@ TBL.ar = mergeDeep(JSON.parse(JSON.stringify(en)), {
     "exported": "تم التصدير ✓",
     "imported": "تم الاستيراد ✓",
     "importFail": "تعذّر الاستيراد",
-    "note": "كل ما تكتبه يُحفظ على هذا الجهاز فقط. ولا يُرسَل إلى أي مكان.",
+    "note": "تُحفَظ الحروف التي تتبّعتها وإعداداتك على هذا الجهاز فقط. ولا يُرسَل أي شيء إلى أي مكان.",
     "privacy": "سياسة الخصوصية",
-    "credit": "تطوير التطبيق: SOYOGI، مكان للاستشارة في الرعاية والدعم"
+    "credit": "تطوير التطبيق: SOYOGI، مكان للاستشارة في الرعاية والدعم",
+    "srcLabel": "بيانات ترتيب الخطوط:",
+    "srcShare": "بيانات الخطوط في هذا التطبيق متاحة بالترخيص نفسه أيضًا."
   },
   "screen": {
     "home": {
@@ -1418,8 +1464,10 @@ TBL.ar = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "title": "تتبّع",
       "on": "قراءة أون",
       "kun": "قراءة كون",
+      "sep": ": ",
       "none": "لا يوجد",
       "speak": "قراءة صوتية",
+      "noVoice": "تعذّرت القراءة الصوتية",
       "stroke": "الخط {n} من أصل {m}",
       "how": "عندما يتحرك الخط الفاتح، تتبّعه بإصبعك.",
       "last": "هذا هو الخط الأخير.",

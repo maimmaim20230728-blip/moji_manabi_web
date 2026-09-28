@@ -228,21 +228,31 @@ input[type="file"].hidden{ display:none; }
 /* ======== 書き順のおさらい: 漢字の一覧・なぞり(アプリ固有) ======== */
 .kanji-grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(64px, 1fr)); gap:10px; margin:8px 0 16px; }
 .kanji-btn{
+  position:relative;
   min-height:64px; font-size:1.7em; font-weight:700; font-family:inherit; line-height:1;
   border:2px solid var(--line); background:var(--card); color:var(--ink); border-radius:14px;
 }
 .kanji-btn.done{ border-color:var(--brand); }
+/* 一覧: きょう なぞった字は枠の色だけでなく小さな ✓ でも示す(色が見分けにくい人向け。点数・件数は出さない) */
+#scr-list .kanji-btn.done::after{
+  content:'✓'; position:absolute; top:3px; inset-inline-end:3px;
+  width:1.5em; height:1.5em; border-radius:50%; display:grid; place-items:center;
+  font-size:.38em; line-height:1; font-weight:700; background:var(--brand); color:#fff;
+}
 .trace-head{ display:flex; align-items:center; gap:16px; margin:0 0 6px; }
 .trace-char{ font-size:3.4em; font-weight:700; line-height:1; flex:none; min-width:1.2em; text-align:center; }
 .trace-readings{ display:flex; flex-direction:column; gap:6px; min-width:0; }
 .reading{ font-weight:700; overflow-wrap:anywhere; }
 .trace-stroke{ font-weight:700; margin:6px 0; }
 .trace-stage{
+  --grid:var(--line);
   position:relative; width:min(100%, 300px); aspect-ratio:1/1; margin:0 auto 8px;
   background:#fff; border:2px solid var(--line); border-radius:16px; overflow:hidden;
-  background-image:linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-image:linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
   background-size:50% 50%; background-position:-1px -1px;
 }
+/* 台はどのテーマでも白地。くろテーマの --line(濃い灰)だとマス目がお手本の薄い線より目立つので、薄い色に固定 */
+body[data-theme="dark"] .trace-stage{ --grid:#e2e6e4; }
 .trace-svg, .trace-canvas{ position:absolute; inset:0; width:100%; height:100%; display:block; }
 .trace-svg path{ stroke-width:4.5; }
 .trace-svg .st-todo{ stroke:#d9dfdb; }
@@ -252,3 +262,11 @@ input[type="file"].hidden{ display:none; }
 .trace-canvas{ touch-action:none; cursor:crosshair; }
 .btn-row .btn.hidden{ display:none !important; }
 .btn:disabled{ opacity:.45; }
+/* 幅360・とても大きい: 左右の余白を少し詰める。日本語・韓国語は語の途中で折らず、分かち書きの空白で折る
+   (overflow-wrap:anywhere は全言語で語の途中の改行を増やすので使わない。はみ出した長い語は訳文を短くした) */
+.btn-row .btn{ padding-left:12px; padding-right:12px; }
+html:lang(ja) .btn-row .btn, html:lang(ko) .btn-row .btn{ word-break:keep-all; }
+/* できた のあとの一文(トーストの代わり。ボタンに重ならない) */
+.trace-done-msg{ font-weight:700; margin:12px 0 0; }
+/* せっていの出典リンク: どのテーマでも読める色・押せる高さ44px以上 */
+.hint a{ color:var(--ink); text-decoration:underline; display:inline-block; padding:10px 2px; }
