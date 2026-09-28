@@ -1,0 +1,15 @@
+このフォルダの SVG は KanjiVG プロジェクトの kanji/ から取得したものです(取得日 2026-09-28・node data/_fetch_kanjivg.js)。
+The SVG files in this folder are taken from the KanjiVG project (kanji/ directory), fetched on 2026-09-28.
+
+KanjiVG
+Copyright (C) 2009-2024 Ulrich Apel
+https://kanjivg.tagaini.net/  /  https://github.com/KanjiVG/kanjivg
+
+License: Creative Commons Attribution-ShareAlike 3.0 (CC BY-SA 3.0)
+https://creativecommons.org/licenses/by-sa/3.0/
+
+アプリ内の書き順データ(data/kanji1.js)は、これらの SVG の <path d> を書き順のとおりに並べ直したものです。
+The stroke data in data/kanji1.js is derived from these SVG files (path d attributes in stroke order).
+data/kanji1.js は KanjiVG の派生物なので、同じ CC BY-SA 3.0 のもとで配布します(アプリ本体のコードとは別のライセンス)。
+data/kanji1.js is a derivative of KanjiVG and is distributed under the same CC BY-SA 3.0 (separately from the app's own code).
+出典表示はアプリの「せってい」画面と README にあります。/ Attribution is shown in the app's Settings screen and the README.
