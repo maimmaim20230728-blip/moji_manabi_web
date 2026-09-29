@@ -96,6 +96,31 @@ var ja = {
       tapHint:'字を おすと、もういちど なぞれます。',
       go:'なぞりに いく'
     }
+  },
+  /* はじめての つかいかた(app.js openGuide・初回に必ず出す・2026-09-30)。heads と bodies は同じ数。
+     ボタン名は画面の文字と同じにする。隠れた入口は無いので GUIDE_AGAIN=true(せっていの「つかいかた」から もう一度) */
+  guide: {
+    title:'つかいかた', step:'{n} / {m}', start:'はじめる', again:'もういちど 見る',
+    heads:[
+      '書き順のおさらいへ ようこそ',
+      'さいしょに すること',
+      'なぞる 字を えらぶ',
+      'お手本を 見る(「なぞる」の 画面)',
+      'ゆびで なぞる(「なぞる」の 画面)',
+      '「きょう やった字」の 画面',
+      'ほぞんする ばしょ と きしゅへんこう',
+      '見やすく する'
+    ],
+    bodies:[
+      'このアプリは、漢字の 書き順を ゆびで なぞって、おさらいする ための 道具です。\n小学校で習う 漢字1026字が 入っています。\nできたか どうかの 判定は しません。点数も ×も 出ません。\nすきな字を、すきなだけ なぞれます。',
+      'ホームの「漢字を なぞる」か、下の「なぞる」を おします。\n字が ならんだ 画面が 出るので、なぞりたい 字を 1つ おします。\nその字の なぞる 画面が ひらきます。',
+      '上の「1年」から「6年」の ボタンで、習う年ごとに 字を 切りかえます。さいごに 見た 年は おぼえて います。\n字が きまって いる ときは、「字を 1つ いれて さがす」の 欄に 字を 1つ 入れて、「ひらく」を おします。\nきょう「できた」を おした 字には ✓ が つきます。',
+      '上に 字と 読み(「音」と「訓」)が 出ます。「🔊 よみあげ」を おすと、読みを 声で 聞けます(声の 出せる 端末だけ)。\nうすい 字の 上を いろの ついた 線が うごいて、いま 書く 1画を 見せます(まるい 点から 書きはじめます)。「もういちど みる」で、もう一度 うごきます。\n「1画め(ぜんぶで 3画)」の ように、いま 何画めかが 出ます。',
+      'うごいた 線の 上を、ゆびで なぞります。\n「つぎの画」で つぎの 画へ、「まえの画」で まえの 画へ うつります。「なぞりを けす」で、なぞった 線を けせます。\nさいごの 画で「できた」を おすと、きょうの 字に 入ります。そのあと「つぎの字へ」(同じ 年の つぎの 字)か「いちらんへ」を えらびます。',
+      '下の「きょう」か、ホームの「きょう やった字」で ひらきます。\nきょう「できた」を おした 字だけが 出ます。日が かわると 新しく なります。\n字を おすと、もういちど なぞれます。',
+      'なぞった 字の きろくと せっていは、この端末の 中だけに ほぞんされます。どこにも 送られません。\nゆびで なぞった 線は ほぞんしません。\nあたらしい スマホに うつる ときは、「せってい」の「かきだす」で ファイルを ほぞんして、あたらしい スマホで「よみこむ」を おします。',
+      '「せってい」の「もじの大きさ」の ボタンを おすたびに、字が「ふつう」「大きい」「とても大きい」に かわります。\n「いろ」で、画面の いろを「みどり」「みずいろ」「しろ」「くろ」から えらべます。\n音楽は「BGM」を「なし」に すると 止まります。\nこの 案内は「せってい」の「つかいかた」で「もういちど 見る」を おすと、また 見られます。'
+    ]
   }
 };
 
@@ -185,6 +210,29 @@ var en = {
       tapHint:'Tap a kanji to trace it again.',
       go:'Go and trace'
     }
+  },
+  guide: {
+    title:'How to use', step:'{n} / {m}', start:'Start', again:'Show again',
+    heads:[
+      'Welcome to Stroke Order Review',
+      'What to do first',
+      'Choosing a kanji',
+      'Watching the model (Trace screen)',
+      'Tracing with your finger (Trace screen)',
+      'The "Kanji I traced today" screen',
+      'Where things are saved, and changing phones',
+      'Making the screen easier to see'
+    ],
+    bodies:[
+      'This app is a tool for reviewing the stroke order of kanji by tracing them with your finger.\nIt has the 1,026 kanji taught in Japanese elementary school.\nNothing is judged, and no score or wrong marks are shown.\nTrace any kanji you like, as many times as you like.',
+      'Tap "Trace a kanji" on the Home screen, or "Trace" at the bottom.\nA screen with rows of kanji appears. Tap the kanji you want to trace.\nThe Trace screen for that kanji opens.',
+      'Use the "Year 1" to "Year 6" buttons at the top to switch the kanji by the year they are taught. The year you looked at last is remembered.\nIf you know the kanji, enter it in "Find a kanji (type or paste one)" and tap "Open".\nKanji you finished today with "Done" have a ✓ mark.',
+      'The kanji and its readings ("On" and "Kun") are shown at the top. Tap "🔊 Read aloud" to hear the readings (only on devices that can speak).\nOver the pale kanji, a colored line moves to show how to write the current stroke (start from the round dot). Tap "Show again" to see it move again.\nThe screen shows which stroke you are on, like "Stroke 1 of 3".',
+      'Trace over the line that moved with your finger.\nTap "Next stroke" to go to the next stroke and "Previous stroke" to go back. Tap "Erase my tracing" to erase the lines you drew.\nOn the last stroke, tap "Done" to add the kanji to today\'s kanji. Then choose "Next kanji" (the next kanji of the same year) or "Back to the list".',
+      'Open it with "Today" at the bottom or "Kanji I traced today" on the Home screen.\nOnly the kanji you finished with "Done" today are shown. The list starts fresh on a new day.\nTap a kanji to trace it again.',
+      'The kanji you traced and your settings are stored only on this device. Nothing is sent anywhere.\nThe lines you draw with your finger are not saved.\nWhen you move to a new phone, tap "Export" in "Settings" to save a file, then tap "Import" on the new phone.',
+      'In "Settings", each tap on the "Text size" button changes the text to "Normal", "Large" or "Very large".\nWith "Color", choose "Green", "Light blue", "White" or "Black" for the screen.\nTo stop the music, set "Music" to "None".\nTo see this guide again, tap "Show again" next to "How to use" in "Settings".'
+    ]
   }
 };
 
@@ -337,6 +385,32 @@ TBL.de = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "tapHint": "Tippen Sie auf ein Kanji, um es noch einmal nachzuzeichnen.",
       "go": "Zum Nachzeichnen"
     }
+  },
+  "guide": {
+    "title": "Anleitung",
+    "step": "{n} / {m}",
+    "start": "Starten",
+    "again": "Noch einmal ansehen",
+    "heads": [
+      "Willkommen bei Kanji-Strichfolge",
+      "Was Sie zuerst tun",
+      "Ein Kanji auswählen",
+      "Die Vorlage ansehen (Bildschirm „Nachzeichnen“)",
+      "Mit dem Finger nachzeichnen (Bildschirm „Nachzeichnen“)",
+      "Der Bildschirm „Heute geübte Kanji“",
+      "Wo alles gespeichert wird, und Gerätewechsel",
+      "Den Bildschirm besser sehen"
+    ],
+    "bodies": [
+      "Mit dieser App wiederholen Sie die Strichfolge von Kanji, indem Sie sie mit dem Finger nachzeichnen.\nSie enthält die 1.026 Kanji, die in der japanischen Grundschule gelernt werden.\nEs wird nicht beurteilt, ob etwas gelungen ist, und es gibt weder Punkte noch Fehlerzeichen.\nZeichnen Sie beliebige Kanji nach, so oft Sie möchten.",
+      "Tippen Sie auf der Startseite auf „Kanji nachzeichnen“ oder unten auf „Nachzeichnen“.\nEs erscheint ein Bildschirm mit vielen Kanji. Tippen Sie auf das Kanji, das Sie nachzeichnen möchten.\nDann öffnet sich der Bildschirm zum Nachzeichnen dieses Kanji.",
+      "Mit den Schaltflächen „Klasse 1“ bis „Klasse 6“ oben wechseln Sie die Kanji nach dem Lernjahr. Das zuletzt angesehene Jahr bleibt gespeichert.\nWenn Sie das Kanji kennen, geben Sie es bei „Kanji suchen (eines eingeben oder einfügen)“ ein und tippen Sie auf „Öffnen“.\nKanji, bei denen Sie heute auf „Fertig“ getippt haben, tragen ein ✓.",
+      "Oben stehen das Kanji und seine Lesungen („On-Lesung“ und „Kun-Lesung“). Mit „🔊 Vorlesen“ hören Sie die Lesungen (nur auf Geräten mit Sprachausgabe).\nÜber dem blassen Kanji bewegt sich eine farbige Linie und zeigt, wie der aktuelle Strich geschrieben wird (Sie beginnen am runden Punkt). Mit „Noch einmal ansehen“ bewegt sie sich erneut.\nEine Anzeige wie „Strich 1 von 3“ zeigt, bei welchem Strich Sie sind.",
+      "Zeichnen Sie die Linie, die sich bewegt hat, mit dem Finger nach.\nMit „Nächster Strich“ gehen Sie zum nächsten Strich, mit „Vorheriger Strich“ zurück. Mit „Zeichnung löschen“ löschen Sie Ihre Linien.\nBeim letzten Strich tippen Sie auf „Fertig“; dann kommt das Kanji zu den heutigen Kanji. Danach wählen Sie „Nächstes Kanji“ (das nächste Kanji desselben Jahres) oder „Zur Liste“.",
+      "Sie öffnen ihn unten mit „Heute“ oder auf der Startseite mit „Heute geübte Kanji“.\nHier stehen nur die Kanji, bei denen Sie heute auf „Fertig“ getippt haben. An einem neuen Tag beginnt die Liste neu.\nWenn Sie auf ein Kanji tippen, können Sie es noch einmal nachzeichnen.",
+      "Die nachgezeichneten Kanji und Ihre Einstellungen werden nur auf diesem Gerät gespeichert. Nichts wird irgendwohin gesendet.\nDie Linien, die Sie mit dem Finger zeichnen, werden nicht gespeichert.\nWenn Sie zu einem neuen Smartphone wechseln, tippen Sie unter „Einstellungen“ auf „Exportieren“, um eine Datei zu speichern, und dann auf dem neuen Smartphone auf „Importieren“.",
+      "Unter „Einstellungen“ ändert jedes Tippen auf die Schaltfläche bei „Schriftgröße“ den Text auf „Normal“, „Groß“ oder „Sehr groß“.\nUnter „Farbe“ wählen Sie „Grün“, „Hellblau“, „Weiß“ oder „Schwarz“.\nDie Musik schalten Sie aus, indem Sie „Musik“ auf „Keine“ stellen.\nDiese Anleitung sehen Sie wieder, wenn Sie unter „Einstellungen“ bei „Anleitung“ auf „Noch einmal ansehen“ tippen."
+    ]
   }
 });
 /* ---- /de ---- */
@@ -486,6 +560,32 @@ TBL.fr = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "tapHint": "Touchez un kanji pour le tracer à nouveau.",
       "go": "Aller tracer"
     }
+  },
+  "guide": {
+    "title": "Mode d'emploi",
+    "step": "{n} / {m}",
+    "start": "Commencer",
+    "again": "Revoir",
+    "heads": [
+      "Bienvenue dans Revoir les traits",
+      "Pour commencer",
+      "Choisir un kanji",
+      "Regarder le modèle (écran « Tracer »)",
+      "Tracer avec le doigt (écran « Tracer »)",
+      "L'écran « Kanji tracés aujourd'hui »",
+      "Où tout est enregistré, et changer de téléphone",
+      "Rendre l'écran plus lisible"
+    ],
+    "bodies": [
+      "Cette application sert à revoir l'ordre des traits des kanji en les traçant avec le doigt.\nElle contient les 1 026 kanji appris à l'école primaire au Japon.\nRien n'est évalué : il n'y a ni score ni marque d'erreur.\nTracez les kanji que vous voulez, autant de fois que vous le voulez.",
+      "Touchez « Tracer un kanji » sur l'accueil, ou « Tracer » en bas.\nUn écran avec des rangées de kanji s'affiche. Touchez le kanji que vous voulez tracer.\nL'écran pour tracer ce kanji s'ouvre.",
+      "Avec les boutons « 1re année » à « 6e année » en haut, changez les kanji selon l'année où on les apprend. La dernière année affichée est gardée en mémoire.\nSi vous connaissez le kanji, saisissez-le dans « Chercher un kanji (en saisir ou en coller un) » et touchez « Ouvrir ».\nLes kanji pour lesquels vous avez touché « C'est fait » aujourd'hui portent un ✓.",
+      "En haut s'affichent le kanji et ses lectures (« On » et « Kun »). Touchez « 🔊 Lire à voix haute » pour les entendre (seulement sur les appareils qui peuvent parler).\nSur le kanji pâle, une ligne de couleur se déplace pour montrer comment écrire le trait en cours (on commence au point rond). Touchez « Revoir » pour la voir bouger à nouveau.\nUne indication comme « Trait 1 sur 3 » montre à quel trait vous êtes.",
+      "Repassez avec le doigt sur la ligne qui a bougé.\nTouchez « Trait suivant » pour passer au trait suivant et « Trait précédent » pour revenir. « Effacer le tracé » efface vos lignes.\nAu dernier trait, touchez « C'est fait » : le kanji est ajouté aux kanji du jour. Choisissez ensuite « Kanji suivant » (le kanji suivant de la même année) ou « Retour à la liste ».",
+      "Ouvrez-le avec « Aujourd'hui » en bas ou « Kanji tracés aujourd'hui » sur l'accueil.\nSeuls les kanji pour lesquels vous avez touché « C'est fait » aujourd'hui s'affichent. La liste se renouvelle chaque jour.\nTouchez un kanji pour le tracer à nouveau.",
+      "Les kanji tracés et vos réglages sont enregistrés uniquement sur cet appareil. Rien n'est envoyé ailleurs.\nLes lignes que vous tracez avec le doigt ne sont pas enregistrées.\nPour passer à un nouveau téléphone, touchez « Exporter » dans « Réglages » pour enregistrer un fichier, puis touchez « Importer » sur le nouveau téléphone.",
+      "Dans « Réglages », chaque toucher sur le bouton de « Taille du texte » passe le texte à « Normale », « Grande » ou « Très grande ».\nAvec « Couleur », choisissez « Vert », « Bleu clair », « Blanc » ou « Noir ».\nPour couper la musique, réglez « Musique » sur « Aucune ».\nPour revoir ce guide, touchez « Revoir » à côté de « Mode d'emploi » dans « Réglages »."
+    ]
   }
 });
 /* ---- /fr ---- */
@@ -635,6 +735,32 @@ TBL.es = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "tapHint": "Tocar un kanji para trazarlo otra vez.",
       "go": "Ir a trazar"
     }
+  },
+  "guide": {
+    "title": "Cómo se usa",
+    "step": "{n} / {m}",
+    "start": "Empezar",
+    "again": "Ver de nuevo",
+    "heads": [
+      "Le damos la bienvenida a Repaso de trazos",
+      "Lo primero",
+      "Elegir un kanji",
+      "Ver el modelo (pantalla «Trazar»)",
+      "Trazar con el dedo (pantalla «Trazar»)",
+      "La pantalla «Kanji trazados hoy»",
+      "Dónde se guarda todo y cambio de teléfono",
+      "Para ver mejor la pantalla"
+    ],
+    "bodies": [
+      "Esta app sirve para repasar el orden de los trazos de los kanji trazándolos con el dedo.\nTiene los 1026 kanji que se aprenden en la escuela primaria de Japón.\nNo se evalúa si sale bien o no, y no hay puntuación ni marcas de error.\nSe puede trazar cualquier kanji, tantas veces como se quiera.",
+      "Tocar «Trazar un kanji» en la pantalla de inicio, o «Trazar» abajo.\nAparece una pantalla con filas de kanji. Tocar el kanji que se quiera trazar.\nSe abre la pantalla para trazar ese kanji.",
+      "Con los botones «Año 1» a «Año 6» de arriba se cambian los kanji según el año en que se aprenden. Se recuerda el último año que se miró.\nSi ya se sabe el kanji, escribirlo en «Buscar un kanji (escribir o pegar uno)» y tocar «Abrir».\nLos kanji marcados hoy con «Listo» llevan un ✓.",
+      "Arriba aparecen el kanji y sus lecturas («On» y «Kun»). Con «🔊 Leer en voz alta» se escuchan las lecturas (solo en dispositivos que pueden hablar).\nSobre el kanji tenue, una línea de color se mueve para mostrar cómo se escribe el trazo actual (se empieza en el punto redondo). Con «Ver otra vez» se vuelve a mover.\nUn texto como «Trazo 1 de 3» indica en qué trazo se está.",
+      "Repasar con el dedo la línea que se movió.\nCon «Trazo siguiente» se pasa al trazo siguiente y con «Trazo anterior» se vuelve atrás. Con «Borrar lo trazado» se borran las líneas dibujadas.\nEn el último trazo, al tocar «Listo», el kanji se agrega a los kanji de hoy. Después se elige «Siguiente kanji» (el siguiente del mismo año) o «Ir a la lista».",
+      "Se abre con «Hoy» abajo o con «Kanji trazados hoy» en la pantalla de inicio.\nSolo aparecen los kanji marcados hoy con «Listo». Con un nuevo día, la lista empieza de cero.\nAl tocar un kanji, se puede trazar otra vez.",
+      "Los kanji trazados y los ajustes se guardan solo en este dispositivo. No se envía nada a ningún lugar.\nLas líneas que se dibujan con el dedo no se guardan.\nAl pasar a un teléfono nuevo, tocar «Exportar» en «Ajustes» para guardar un archivo y luego tocar «Importar» en el teléfono nuevo.",
+      "En «Ajustes», cada toque en el botón de «Tamaño del texto» cambia el texto a «Normal», «Grande» o «Muy grande».\nEn «Color» se elige «Verde», «Azul claro», «Blanco» o «Negro».\nPara quitar la música, poner «Música» en «Ninguna».\nPara ver esta guía otra vez, tocar «Ver de nuevo» junto a «Cómo se usa» en «Ajustes»."
+    ]
   }
 });
 /* ---- /es ---- */
@@ -784,6 +910,32 @@ TBL.it = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "tapHint": "Tocchi un kanji per ricalcarlo di nuovo.",
       "go": "Vai a ricalcare"
     }
+  },
+  "guide": {
+    "title": "Come si usa",
+    "step": "{n} / {m}",
+    "start": "Inizia",
+    "again": "Rivedi",
+    "heads": [
+      "Benvenuti in Ripasso dei tratti",
+      "Per cominciare",
+      "Scegliere un kanji",
+      "Guardare il modello (schermata «Ricalca»)",
+      "Ricalcare con il dito (schermata «Ricalca»)",
+      "La schermata «Kanji ricalcati oggi»",
+      "Dove viene salvato tutto, e cambio di telefono",
+      "Per vedere meglio lo schermo"
+    ],
+    "bodies": [
+      "Questa app serve a ripassare l'ordine dei tratti dei kanji ricalcandoli con il dito.\nContiene i 1026 kanji insegnati alla scuola elementare in Giappone.\nNon viene valutato se è venuto bene o no: non ci sono punteggi né segni di errore.\nPuò ricalcare i kanji che preferisce, quante volte vuole.",
+      "Tocchi «Ricalca un kanji» nella schermata Home, oppure «Ricalca» in basso.\nCompare una schermata con file di kanji. Tocchi il kanji che vuole ricalcare.\nSi apre la schermata per ricalcare quel kanji.",
+      "Con i pulsanti da «Anno 1» a «Anno 6» in alto cambia i kanji in base all'anno in cui si imparano. L'ultimo anno che ha guardato viene ricordato.\nSe conosce già il kanji, lo scriva in «Cerchi un kanji (ne scriva o incolli uno)» e tocchi «Apri».\nI kanji per cui oggi ha toccato «Fatto» hanno un ✓.",
+      "In alto compaiono il kanji e le sue letture («Lettura on» e «Lettura kun»). Con «🔊 Leggi ad alta voce» ascolta le letture (solo sui dispositivi che possono parlare).\nSul kanji chiaro si muove una linea colorata per mostrare come si scrive il tratto attuale (si parte dal punto tondo). Con «Guarda di nuovo» si muove ancora.\nUna scritta come «Tratto 1 di 3» indica il tratto a cui si trova.",
+      "Ripassi con il dito la linea che si è mossa.\nCon «Tratto successivo» va al tratto successivo, con «Tratto precedente» torna indietro. Con «Cancella la traccia» cancella le linee disegnate.\nAll'ultimo tratto tocchi «Fatto»: il kanji viene aggiunto ai kanji di oggi. Poi scelga «Kanji successivo» (il kanji successivo dello stesso anno) o «Torna all'elenco».",
+      "Si apre con «Oggi» in basso o con «Kanji ricalcati oggi» nella schermata Home.\nCompaiono solo i kanji per cui oggi ha toccato «Fatto». Quando cambia il giorno, l'elenco ricomincia da capo.\nTocchi un kanji per ricalcarlo di nuovo.",
+      "I kanji ricalcati e le impostazioni vengono salvati solo su questo dispositivo. Non viene inviato niente da nessuna parte.\nLe linee che disegna con il dito non vengono salvate.\nQuando passa a un nuovo telefono, tocchi «Esporta» in «Impostazioni» per salvare un file, poi sul nuovo telefono tocchi «Importa».",
+      "In «Impostazioni», ogni tocco sul pulsante di «Dimensione del testo» cambia il testo in «Normale», «Grande» o «Molto grande».\nCon «Colore» sceglie «Verde», «Azzurro», «Bianco» o «Nero».\nPer togliere la musica, imposti «Musica» su «Nessuna».\nPer rivedere questa guida, tocchi «Rivedi» accanto a «Come si usa» in «Impostazioni»."
+    ]
   }
 });
 /* ---- /it ---- */
@@ -933,6 +1085,32 @@ TBL.pt = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "tapHint": "Tocar num kanji para voltar a traçar.",
       "go": "Ir traçar"
     }
+  },
+  "guide": {
+    "title": "Como usar",
+    "step": "{n} / {m}",
+    "start": "Começar",
+    "again": "Ver de novo",
+    "heads": [
+      "Boas-vindas à Revisão dos traços",
+      "O primeiro passo",
+      "Escolher um kanji",
+      "Ver o modelo (ecrã «Traçar»)",
+      "Traçar com o dedo (ecrã «Traçar»)",
+      "O ecrã «Kanji traçados hoje»",
+      "Onde tudo fica guardado, e mudança de smartphone",
+      "Para ver melhor o ecrã"
+    ],
+    "bodies": [
+      "Esta app serve para rever a ordem dos traços dos kanji, traçando-os com o dedo.\nTem os 1026 kanji aprendidos na escola primária no Japão.\nNão há avaliação de acerto, nem pontuação, nem marcas de erro.\nPode traçar o kanji que quiser, quantas vezes quiser.",
+      "Tocar em «Traçar kanji» no ecrã inicial, ou em «Traçar» em baixo.\nAparece um ecrã com filas de kanji. Tocar no kanji que se quer traçar.\nAbre-se o ecrã para traçar esse kanji.",
+      "Com os botões «1.º ano» a «6.º ano» no topo, os kanji mudam conforme o ano em que se aprendem. O último ano visto fica guardado.\nSe já souber qual é o kanji, escrevê-lo em «Procurar um kanji (escrever ou colar um)» e tocar em «Abrir».\nOs kanji marcados hoje com «Feito» têm um ✓.",
+      "No topo aparecem o kanji e as suas leituras («Leitura on» e «Leitura kun»). Com «🔊 Ler em voz alta» ouvem-se as leituras (só nos dispositivos que conseguem falar).\nSobre o kanji claro, uma linha colorida move-se para mostrar como se escreve o traço atual (começa-se no ponto redondo). Com «Ver de novo», volta a mover-se.\nUm texto como «Traço 1 de 3» indica em que traço se está.",
+      "Traçar com o dedo por cima da linha que se moveu.\nCom «Traço seguinte» passa-se ao traço seguinte e com «Traço anterior» volta-se atrás. Com «Apagar o traçado» apagam-se as linhas desenhadas.\nNo último traço, ao tocar em «Feito», o kanji é adicionado aos kanji de hoje. Depois, escolher «Kanji seguinte» (o seguinte do mesmo ano) ou «Ir para a lista».",
+      "Abre-se com «Hoje» em baixo ou com «Kanji traçados hoje» no ecrã inicial.\nSó aparecem os kanji marcados hoje com «Feito». Num novo dia, a lista recomeça.\nTocar num kanji para voltar a traçar.",
+      "Os kanji traçados e os ajustes ficam guardados só neste dispositivo. Nada é enviado para fora.\nAs linhas desenhadas com o dedo não são guardadas.\nAo mudar para um novo smartphone, tocar em «Exportar» em «Ajustes» para guardar um ficheiro e, depois, tocar em «Importar» no novo smartphone.",
+      "Em «Ajustes», cada toque no botão de «Tamanho do texto» muda o texto para «Normal», «Grande» ou «Muito grande».\nEm «Cor», escolher «Verde», «Azul-claro», «Branco» ou «Preto».\nPara desligar a música, pôr «Música» em «Nenhuma».\nPara ver este guia de novo, tocar em «Ver de novo» ao lado de «Como usar» em «Ajustes»."
+    ]
   }
 });
 /* ---- /pt ---- */
@@ -1082,6 +1260,32 @@ TBL.nl = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "tapHint": "Tik op een kanji om die nog eens over te trekken.",
       "go": "Ga overtrekken"
     }
+  },
+  "guide": {
+    "title": "Zo werkt het",
+    "step": "{n} / {m}",
+    "start": "Beginnen",
+    "again": "Opnieuw bekijken",
+    "heads": [
+      "Welkom bij Schrijfvolgorde",
+      "Wat u eerst doet",
+      "Een kanji kiezen",
+      "Het voorbeeld bekijken (scherm ‘Overtrekken’)",
+      "Met uw vinger overtrekken (scherm ‘Overtrekken’)",
+      "Het scherm ‘Vandaag overgetrokken kanji’",
+      "Waar alles wordt bewaard, en een nieuwe telefoon",
+      "Het scherm beter leesbaar maken"
+    ],
+    "bodies": [
+      "Met deze app herhaalt u de schrijfvolgorde van kanji door ze met uw vinger over te trekken.\nEr staan de 1026 kanji in die op de Japanse basisschool worden geleerd.\nEr wordt niet beoordeeld of het goed is, en er zijn geen punten of foutkruisjes.\nTrek elke kanji over die u wilt, zo vaak als u wilt.",
+      "Tik op het startscherm op ‘Kanji overtrekken’, of onderaan op ‘Overtrekken’.\nEr verschijnt een scherm met rijen kanji. Tik op de kanji die u wilt overtrekken.\nHet scherm om die kanji over te trekken gaat open.",
+      "Met de knoppen ‘Jaar 1’ tot ‘Jaar 6’ bovenaan wisselt u de kanji per jaar waarin ze worden geleerd. Het jaar dat u het laatst bekeek, wordt onthouden.\nWeet u welke kanji u zoekt? Typ die dan bij ‘Kanji zoeken (typ of plak er één)’ en tik op ‘Openen’.\nKanji waarbij u vandaag op ‘Klaar’ hebt getikt, hebben een ✓.",
+      "Bovenaan staan de kanji en de lezingen (‘On-lezing’ en ‘Kun-lezing’). Met ‘🔊 Voorlezen’ hoort u de lezingen (alleen op apparaten die kunnen spreken).\nOver de lichte kanji beweegt een gekleurde lijn en laat zien hoe u de huidige streek schrijft (u begint bij de ronde stip). Met ‘Nog eens bekijken’ beweegt die opnieuw.\nEen tekst als ‘Streek 1 (in totaal 3)’ laat zien bij welke streek u bent.",
+      "Trek de lijn die bewoog met uw vinger over.\nMet ‘Volgende streek’ gaat u naar de volgende streek, met ‘Vorige streek’ terug. Met ‘Overtrekken wissen’ wist u uw lijnen.\nTik bij de laatste streek op ‘Klaar’; dan komt de kanji bij de kanji van vandaag. Kies daarna ‘Volgende kanji’ (de volgende van hetzelfde jaar) of ‘Naar de lijst’.",
+      "U opent het onderaan met ‘Vandaag’ of op het startscherm met ‘Vandaag overgetrokken kanji’.\nHier staan alleen de kanji waarbij u vandaag op ‘Klaar’ hebt getikt. Op een nieuwe dag begint de lijst opnieuw.\nTik op een kanji om die nog eens over te trekken.",
+      "De overgetrokken kanji en uw instellingen worden alleen op dit apparaat bewaard. Er wordt niets verstuurd.\nDe lijnen die u met uw vinger trekt, worden niet bewaard.\nGaat u over naar een nieuwe telefoon? Tik dan in ‘Instellingen’ op ‘Exporteren’ om een bestand op te slaan, en tik daarna op de nieuwe telefoon op ‘Importeren’.",
+      "In ‘Instellingen’ verandert elke tik op de knop bij ‘Tekstgrootte’ de tekst in ‘Normaal’, ‘Groot’ of ‘Heel groot’.\nBij ‘Kleur’ kiest u ‘Groen’, ‘Lichtblauw’, ‘Wit’ of ‘Zwart’.\nDe muziek zet u uit door ‘Muziek’ op ‘Geen’ te zetten.\nWilt u deze uitleg nog eens zien? Tik in ‘Instellingen’ bij ‘Zo werkt het’ op ‘Opnieuw bekijken’."
+    ]
   }
 });
 /* ---- /nl ---- */
@@ -1231,6 +1435,32 @@ TBL.sv = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "tapHint": "Tryck på ett kanji för att spåra det igen.",
       "go": "Börja spåra"
     }
+  },
+  "guide": {
+    "title": "Så fungerar det",
+    "step": "{n} / {m}",
+    "start": "Börja",
+    "again": "Visa igen",
+    "heads": [
+      "Välkommen till Streckordningen igen",
+      "Det första du gör",
+      "Välj ett kanji",
+      "Titta på förebilden (skärmen ”Spåra”)",
+      "Spåra med fingret (skärmen ”Spåra”)",
+      "Skärmen ”Kanji jag spårat idag”",
+      "Var allt sparas, och byte av telefon",
+      "Gör skärmen lättare att se"
+    ],
+    "bodies": [
+      "Den här appen är ett verktyg för att repetera streckordningen i kanji genom att spåra dem med fingret.\nDen har de 1 026 kanji som lärs ut i den japanska grundskolan.\nInget bedöms, och inga poäng eller felmarkeringar visas.\nSpåra vilka kanji du vill, så många gånger du vill.",
+      "Tryck på ”Spåra ett kanji” på hemskärmen, eller på ”Spåra” längst ner.\nEn skärm med rader av kanji visas. Tryck på det kanji du vill spåra.\nSkärmen för att spåra det kanjit öppnas.",
+      "Med knapparna ”Årskurs 1” till ”Årskurs 6” överst byter du kanji efter året då de lärs ut. Året du tittade på sist kommer appen ihåg.\nOm du vet vilket kanji du vill ha, skriv det i ”Sök ett kanji (skriv eller klistra in ett)” och tryck på ”Öppna”.\nKanji som du har tryckt ”Klar” på idag får en ✓.",
+      "Överst visas kanjit och dess läsningar (”On-läsning” och ”Kun-läsning”). Tryck på ”🔊 Läs upp” för att höra läsningarna (bara på enheter som kan tala).\nÖver det ljusa kanjit rör sig en färgad linje och visar hur det aktuella draget skrivs (du börjar vid den runda pricken). Tryck på ”Visa igen” för att se den röra sig igen.\nEn text som ”Drag 1 av 3” visar vilket drag du är på.",
+      "Följ linjen som rörde sig med fingret.\nTryck på ”Nästa drag” för att gå till nästa drag och på ”Förra draget” för att gå tillbaka. Med ”Sudda ut spåret” suddar du ut dina linjer.\nPå det sista draget trycker du på ”Klar”, så läggs kanjit till i dagens kanji. Välj sedan ”Nästa kanji” (nästa kanji från samma år) eller ”Till listan”.",
+      "Du öppnar den med ”Idag” längst ner eller med ”Kanji jag spårat idag” på hemskärmen.\nHär visas bara de kanji du har tryckt ”Klar” på idag. När det blir en ny dag börjar listan om.\nTryck på ett kanji för att spåra det igen.",
+      "De kanji du har spårat och dina inställningar sparas bara på den här enheten. Inget skickas någonstans.\nLinjerna du drar med fingret sparas inte.\nNär du byter till en ny telefon: tryck på ”Exportera” i ”Inställningar” för att spara en fil, och tryck sedan på ”Importera” i den nya telefonen.",
+      "I ”Inställningar” ändrar varje tryck på knappen vid ”Textstorlek” texten till ”Normal”, ”Stor” eller ”Mycket stor”.\nVid ”Färg” väljer du ”Grön”, ”Ljusblå”, ”Vit” eller ”Svart”.\nMusiken stänger du av genom att sätta ”Musik” på ”Ingen”.\nFör att se den här guiden igen trycker du på ”Visa igen” vid ”Så fungerar det” i ”Inställningar”."
+    ]
   }
 });
 /* ---- /sv ---- */
@@ -1380,6 +1610,32 @@ TBL.ko = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "tapHint": "글자를 누르면 다시 따라 쓸 수 있어요.",
       "go": "따라 쓰러 가기"
     }
+  },
+  "guide": {
+    "title": "사용 방법",
+    "step": "{n} / {m}",
+    "start": "시작하기",
+    "again": "다시 보기",
+    "heads": [
+      "필순 다시 보기에 오신 것을 환영해요",
+      "처음에 할 일",
+      "따라 쓸 글자 고르기",
+      "본보기 보기('따라 쓰기' 화면)",
+      "손가락으로 따라 쓰기('따라 쓰기' 화면)",
+      "'오늘 쓴 글자' 화면",
+      "저장되는 곳과 기기 변경",
+      "화면을 보기 쉽게"
+    ],
+    "bodies": [
+      "이 앱은 한자의 필순을 손가락으로 따라 쓰면서 다시 익히는 도구예요.\n일본 초등학교에서 배우는 한자 1,026자가 들어 있어요.\n잘했는지 판정하지 않아요. 점수도 × 표시도 나오지 않아요.\n좋아하는 글자를 원하는 만큼 따라 쓸 수 있어요.",
+      "홈의 '한자 따라 쓰기'나 아래의 '따라 쓰기'를 눌러요.\n한자가 늘어선 화면이 나오면, 따라 쓰고 싶은 글자를 하나 눌러요.\n그 글자를 따라 쓰는 화면이 열려요.",
+      "위의 '1학년'부터 '6학년'까지의 버튼으로 배우는 학년별로 글자를 바꿔요. 마지막에 본 학년은 기억해 둬요.\n찾는 글자가 정해져 있으면 '한자 한 글자를 넣어서 찾기' 칸에 한 글자를 넣고 '열기'를 눌러요.\n오늘 '다 했어요'를 누른 글자에는 ✓ 표시가 붙어요.",
+      "위에 글자와 읽기('음독', '훈독')가 나와요. '🔊 읽어 주기'를 누르면 읽기를 소리로 들을 수 있어요(소리를 낼 수 있는 기기만).\n연한 글자 위로 색이 있는 선이 움직이며 지금 쓸 한 획을 보여 줘요(동그란 점에서 쓰기 시작해요). '다시 보기'를 누르면 다시 움직여요.\n'1번째 획 (모두 3획)'처럼 지금 몇 번째 획인지 나와요.",
+      "움직인 선 위를 손가락으로 따라 써요.\n'다음 획'으로 다음 획에, '이전 획'으로 이전 획에 가요. '따라 쓴 선 지우기'로 따라 쓴 선을 지울 수 있어요.\n마지막 획에서 '다 했어요'를 누르면 오늘의 글자에 들어가요. 그다음 '다음 글자로'(같은 학년의 다음 글자)나 '목록으로'를 골라요.",
+      "아래의 '오늘'이나 홈의 '오늘 쓴 글자'로 열어요.\n오늘 '다 했어요'를 누른 글자만 나와요. 날짜가 바뀌면 새로 시작돼요.\n글자를 누르면 다시 따라 쓸 수 있어요.",
+      "따라 쓴 글자 기록과 설정은 이 기기 안에만 저장돼요. 어디에도 보내지 않아요.\n손가락으로 그은 선은 저장하지 않아요.\n새 스마트폰으로 옮길 때는 '설정'의 '내보내기'로 파일을 저장하고, 새 스마트폰에서 '가져오기'를 눌러요.",
+      "'설정'의 '글자 크기' 버튼을 누를 때마다 글자가 '보통', '크게', '아주 크게'로 바뀌어요.\n'색'에서 화면 색을 '초록', '하늘색', '흰색', '검정' 중에서 고를 수 있어요.\n음악은 '배경음악'을 '없음'으로 하면 꺼져요.\n이 안내는 '설정'의 '사용 방법'에서 '다시 보기'를 누르면 다시 볼 수 있어요."
+    ]
   }
 });
 /* ---- /ko ---- */
@@ -1529,6 +1785,32 @@ TBL.zh = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "tapHint": "点一下字，可以再描一次。",
       "go": "去描字"
     }
+  },
+  "guide": {
+    "title": "使用方法",
+    "step": "{n} / {m}",
+    "start": "开始",
+    "again": "再看一次",
+    "heads": [
+      "欢迎使用笔顺复习",
+      "首先要做的事",
+      "选择要描的字",
+      "看示范（“描字”画面）",
+      "用手指描（“描字”画面）",
+      "“今天描过的字”画面",
+      "保存的位置和更换手机",
+      "让画面更容易看"
+    ],
+    "bodies": [
+      "这个应用是一个工具，用手指按笔顺描汉字，复习汉字的笔顺。\n收录了日本小学所学的1026个汉字。\n不判断写得对不对，没有分数，也不打叉。\n喜欢的字，想描多少次都可以。",
+      "点首页的“描汉字”，或者点下方的“描字”。\n会出现排满汉字的画面，点一下想描的字。\n就会打开描这个字的画面。",
+      "用上方“1年级”到“6年级”的按钮，按学习的年级切换汉字。会记住最后看的年级。\n知道要找的字时，在“输入一个字来查找”栏里输入一个字，再点“打开”。\n今天点过“完成”的字会带有 ✓。",
+      "上方会显示字和读音（“音读”“训读”）。点“🔊 朗读”可以听读音（仅限能发声的设备）。\n在浅色的字上，有颜色的线会动起来，演示现在要写的这一画（从圆点开始写）。点“再看一次”会再动一次。\n像“第1画（共3画）”这样，会显示现在是第几画。",
+      "用手指沿着动过的线描。\n点“下一画”进入下一画，点“上一画”回到上一画。点“擦掉描过的线”可以擦掉描的线。\n最后一画时点“完成”，这个字就会加入今天的字。之后可以选“下一个字”（同一年级的下一个字）或“回到列表”。",
+      "点下方的“今天”或首页的“今天描过的字”打开。\n只显示今天点过“完成”的字。到了新的一天会重新开始。\n点一下字，可以再描一次。",
+      "描过的字的记录和设置只保存在这台设备里，不会发送到任何地方。\n用手指画的线不会保存。\n换新手机时，请在“设置”里点“导出”保存文件，再在新手机上点“导入”。",
+      "在“设置”里，每点一次“文字大小”的按钮，文字就会在“普通”“大”“特大”之间切换。\n在“颜色”里，可以从“绿色”“浅蓝”“白色”“黑色”中选择画面颜色。\n把“背景音乐”设为“无”，就可以关掉音乐。\n在“设置”的“使用方法”里点“再看一次”，就能再次查看这个说明。"
+    ]
   }
 });
 /* ---- /zh ---- */
@@ -1678,6 +1960,32 @@ TBL.ar = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "tapHint": "اضغط على حرف لتتبّعه مرة أخرى.",
       "go": "ابدأ التتبّع"
     }
+  },
+  "guide": {
+    "title": "طريقة الاستخدام",
+    "step": "{n} من {m}",
+    "start": "ابدأ",
+    "again": "عرض مرة أخرى",
+    "heads": [
+      "مرحبًا بك في مراجعة ترتيب الخطوط",
+      "أول ما تفعله",
+      "اختيار حرف",
+      "مشاهدة النموذج (شاشة «تتبّع»)",
+      "التتبّع بالإصبع (شاشة «تتبّع»)",
+      "شاشة «الحروف التي تتبّعتها اليوم»",
+      "أين يُحفظ كل شيء، وتغيير الهاتف",
+      "لجعل الشاشة أسهل في الرؤية"
+    ],
+    "bodies": [
+      "هذا التطبيق أداة لمراجعة ترتيب خطوط حروف الكانجي بتتبّعها بإصبعك.\nفيه حروف الكانجي الـ1026 التي تُدرَّس في المدرسة الابتدائية في اليابان.\nلا يوجد حكم على الصواب أو الخطأ، ولا تظهر درجات ولا علامات خطأ.\nتتبّع أي حرف تحبه، بقدر ما تحب.",
+      "اضغط «تتبّع حرف كانجي» في الشاشة الرئيسية، أو «تتبّع» في الأسفل.\nتظهر شاشة فيها صفوف من حروف الكانجي. اضغط على الحرف الذي تريد تتبّعه.\nتُفتح شاشة تتبّع هذا الحرف.",
+      "بأزرار «الصف 1» إلى «الصف 6» في الأعلى تغيّر الحروف حسب السنة التي تُدرَّس فيها. ويُحفظ آخر صف نظرت إليه.\nإذا كنت تعرف الحرف، فاكتبه في «ابحث عن حرف كانجي (اكتب حرفًا واحدًا أو الصقه)» ثم اضغط «فتح».\nالحروف التي ضغطت فيها «تمّ» اليوم تحمل علامة ✓.",
+      "في الأعلى يظهر الحرف وقراءتاه («قراءة أون» و«قراءة كون»). اضغط «🔊 قراءة صوتية» لتسمع القراءتين (فقط على الأجهزة التي تستطيع النطق).\nفوق الحرف الباهت يتحرك خط ملوّن ليُريك كيف يُكتب الخط الحالي (ابدأ من النقطة المستديرة). اضغط «عرض مجددًا» ليتحرك مرة أخرى.\nتُظهر عبارة مثل «الخط 1 من أصل 3» الخط الذي أنت عنده.",
+      "تتبّع بإصبعك الخط الذي تحرّك.\nاضغط «الخط التالي» للانتقال إلى الخط التالي، و«الخط السابق» للرجوع. وبالضغط على «مسح التتبّع» تمسح الخطوط التي رسمتها.\nعند الخط الأخير اضغط «تمّ»، فيُضاف الحرف إلى حروف اليوم. ثم اختر «الحرف التالي» (الحرف التالي من الصف نفسه) أو «إلى القائمة».",
+      "افتحها بـ«اليوم» في الأسفل أو بـ«حروف اليوم» في الشاشة الرئيسية.\nتظهر فقط الحروف التي ضغطت فيها «تمّ» اليوم. وعندما يأتي يوم جديد، تبدأ القائمة من جديد.\nاضغط على حرف لتتبّعه مرة أخرى.",
+      "تُحفَظ الحروف التي تتبّعتها وإعداداتك على هذا الجهاز فقط. ولا يُرسَل أي شيء إلى أي مكان.\nالخطوط التي ترسمها بإصبعك لا تُحفظ.\nعند الانتقال إلى هاتف جديد، اضغط «تصدير» في «الإعدادات» لحفظ ملف، ثم اضغط «استيراد» في الهاتف الجديد.",
+      "في «الإعدادات»، كل ضغطة على زر «حجم الخط» تغيّر النص إلى «عادي» أو «كبير» أو «كبير جدًا».\nومن «اللون» اختر «أخضر» أو «أزرق فاتح» أو «أبيض» أو «أسود».\nلإيقاف الموسيقى، اجعل «الموسيقى» على «بدون».\nلرؤية هذا الدليل مرة أخرى، اضغط «عرض مرة أخرى» بجانب «طريقة الاستخدام» في «الإعدادات»."
+    ]
   }
 });
 /* ---- /ar ---- */
