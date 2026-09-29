@@ -85,6 +85,8 @@
       inp.setAttribute('spellcheck', 'false');
       inp.setAttribute('enterkeyhint', 'go');
       inp.setAttribute('aria-describedby', 'kanji-find-msg');
+      /* さがす欄=保存するものではない。Android の戻るボタン(Play版)の「書きかけ」の確かめには数えない(2026-09-29) */
+      inp.setAttribute('data-nodirty', '1');
       var goB = api.el('button', 'btn find-go', T('screen.list.findGo'));
       frow.appendChild(inp); frow.appendChild(goB);
       find.appendChild(frow);

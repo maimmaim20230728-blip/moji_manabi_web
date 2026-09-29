@@ -239,6 +239,13 @@
       /* 初回描画(レイアウト確定後に canvas を実寸に) */
       paint();
       if(typeof requestAnimationFrame === 'function') requestAnimationFrame(fit); else fit();
+    },
+    /* Android の戻るボタン(Play版・2026-09-29 点検): 読み上げの途中なら止めてから、来た画面へ(false=共通の動き)。
+       止めないと、画面は一覧に戻っても声だけ続く(Play版は端末の読み上げなので、アプリを後ろに下げても続く)。
+       何画めかは画面の中の進み具合なので、戻るでは画を戻さない(画を戻すのは「まえの画」) */
+    back: function(api){
+      try{ if(api && typeof api.stopSpeak === 'function') api.stopSpeak(); }catch(_){}
+      return false;
     }
   });
 })();
