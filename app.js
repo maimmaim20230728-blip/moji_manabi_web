@@ -9,7 +9,7 @@
      変えたら README の「シェルの変更点」に書く */
 (function(){
 
-var VER = '0.5.6';               // 🔴 更新のたびに上げる(build.gradle の versionName / sw.js の CACHE と一緒に)
+var VER = '0.5.7';               // 🔴 更新のたびに上げる(build.gradle の versionName / sw.js の CACHE と一緒に)
 var APP_KEY = 'moji_manabi';        // バックアップの識別(別アプリのファイルを読まない)
 var LS = 'moji.';
 var LS_PREF = LS + 'pref.v1';
@@ -46,7 +46,7 @@ function sanitizePref(p){
   };
 }
 var pref = sanitizePref(loadJSON(LS_PREF));
-function savePref(){ saveJSON(LS_PREF, pref); }
+function savePref(){ return saveJSON(LS_PREF, pref); }
 function next(list, cur){ return list[(list.indexOf(cur) + 1) % list.length]; }
 
 /* ---- i18n ---- */
@@ -139,6 +139,17 @@ function el(tag, cls, txt){
   if(txt != null) e.textContent = txt;
   return e;
 }
+/* button でない押す場所(div 等)を、Tab で届き Enter/Space で押せるようにする。押すと click を出す=Tap が拾う(2026-10-30) */
+function keyButton(e){
+  if(!e) return;
+  e.setAttribute('role', 'button');
+  e.setAttribute('tabindex', '0');
+  e.addEventListener('keydown', function(ev){
+    if(ev.key !== 'Enter' && ev.key !== ' ' && ev.key !== 'Spacebar') return;
+    ev.preventDefault();
+    e.click();
+  });
+}
 
 /* ---- 読み上げ(任意。Play版のWebViewはWeb Speech API非対応なのでネイティブへ橋渡し) ----
    バンドラ無しなので Capacitor.registerPlugin(@capacitor/core の関数)は WebView に無い。
@@ -228,7 +239,14 @@ function screenApi(){
     save: function(k, v){ return saveJSON(LS + k, v); },   // false=容量オーバー等(呼び出し側で通知して取消)
     remove: function(k){ removeKey(LS + k); },
     getExtra: function(k, d){ return (pref.extra[k] === undefined) ? d : pref.extra[k]; },
-    setExtra: function(k, v){ pref.extra[k] = v; savePref(); },
+    /* 保存できなければ(容量いっぱい等)元の値に戻して false(2026-10-30) */
+    setExtra: function(k, v){
+      var had = Object.prototype.hasOwnProperty.call(pref.extra, k), old = pref.extra[k];
+      pref.extra[k] = v;
+      if(savePref()) return true;
+      if(had) pref.extra[k] = old; else delete pref.extra[k];
+      return false;
+    },
     speak: speak, stopSpeak: stopSpeak, canSpeak: canSpeak, vibrate: vibrate,
     lang: pref.lang,
     rtl: RTL_LANGS.indexOf(pref.lang) >= 0,
@@ -546,6 +564,12 @@ function exportBackup(){
    やめる → 何も変えない。OK → 丸ごと入れ替え = ファイルに無い、このアプリの保存キー(「moji.」で始まるもの)を消してから、ファイルの中身を書く。
    ほかのアプリのキーは消さない(Web版は同じオリジンに別のアプリが同居する)。
    confirm が無い環境(疑似DOMのスモーク)は聞かずに進む */
+/* このアプリの保存キー(moji.)を全部 { キー: 生の文字列 } で控える(よみこむ が途中で失敗したときに戻す用) */
+function snapshotOwn(){
+  var s = {};
+  for(var i = 0; i < localStorage.length; i++){ var k = localStorage.key(i); if(k && k.indexOf(LS) === 0) s[k] = localStorage.getItem(k); }
+  return s;
+}
 function askImport(done){
   askBox(T('set.importConfirm'), done, true);
 }
@@ -562,19 +586,33 @@ function importBackup(e){
     }catch(err){ toast(T('set.importFail')); return; }
     askImport(function(ok){
       if(!ok) return;
+      /* 途中で書けなかったら(容量など)、控えておいた元の中身に戻す(2026-10-30・読み書きの作業台と同じ形) */
+      var before = null;
       try{
+        before = snapshotOwn();
         var data = d.data || {}, old = [], i, k;
         for(i = 0; i < localStorage.length; i++){
           k = localStorage.key(i);
           if(k && k.indexOf(LS) === 0 && k !== LS_PREF && !Object.prototype.hasOwnProperty.call(data, k.slice(LS.length))) old.push(k);
         }
         old.forEach(removeKey);
-        for(k in data){ if(Object.prototype.hasOwnProperty.call(data, k)) saveJSON(LS + k, data[k]); }
+        for(k in data){ if(Object.prototype.hasOwnProperty.call(data, k) && !saveJSON(LS + k, data[k])) throw new Error('save failed'); }
         pref = sanitizePref(d.pref);
-        savePref();
+        if(!savePref()) throw new Error('save failed');
         applyAll(true);
         toast(T('set.imported'));
-      }catch(err){ toast(T('set.importFail')); }
+      }catch(err){
+        if(before){
+          try{
+            var ks = Object.keys(snapshotOwn());
+            for(var r2 = 0; r2 < ks.length; r2++) removeKey(ks[r2]);
+            for(var b in before) localStorage.setItem(b, before[b]);
+          }catch(_){}
+          pref = sanitizePref(loadJSON(LS_PREF));
+          try{ applyAll(false); }catch(_){}
+        }
+        toast(T('set.importFail'));
+      }
     });
   };
   r.readAsText(f);
@@ -599,6 +637,7 @@ function init(){
     (function(b){ Tap.bind(b, function(){ showScreen(b.getAttribute('data-scr'), 'tab'); }); })(navs[i]);
   }
   Tap.bind($('hd-title'), function(){ showScreen('home'); });   // 名前タップ=いつでもホームへ
+  keyButton($('hd-title'));                                      // キーボード・スイッチでも届く(2026-10-30)
 
   Tap.bind($('btn-fs'), function(){ pref.fs = (pref.fs + 1) % 3; applyBodyClass(); savePref(); applyI18n(); });
   Tap.bind($('btn-theme'), function(){ pref.theme = next(THEMES, pref.theme); applyTheme(); savePref(); applyI18n(); });

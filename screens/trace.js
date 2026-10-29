@@ -38,7 +38,8 @@
   function brandColor(){
     try{
       if(typeof getComputedStyle === 'function'){
-        var v = getComputedStyle(document.body).getPropertyValue('--brand');
+        var cs = getComputedStyle(document.body);
+        var v = cs.getPropertyValue('--trace-ink') || cs.getPropertyValue('--brand');   /* 白地の台に載せる色(くろテーマは濃い緑・2026-10-30) */
         if(v && v.trim()) return v.trim();
       }
     }catch(_){}

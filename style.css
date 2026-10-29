@@ -268,8 +268,11 @@ body[data-theme="dark"] .trace-stage{ --grid:#e2e6e4; }
 .trace-svg path{ stroke-width:4.5; }
 .trace-svg .st-todo{ stroke:#d9dfdb; }
 .trace-svg .st-done{ stroke:#a9bfb3; }
-.trace-svg .st-cur{ stroke:var(--brand); stroke-width:5.5; }
-.trace-svg .st-dot{ fill:var(--brand); opacity:.8; }
+/* お手本の今の画・ゆびの線(trace.js が --trace-ink を読む)。台は白地なので、くろテーマの明るい緑(#43c08a・白地に約2.3:1)は使わず濃い緑に(2026-10-30) */
+body{ --trace-ink:var(--brand); }
+body[data-theme="dark"]{ --trace-ink:#237a52; }
+.trace-svg .st-cur{ stroke:var(--trace-ink); stroke-width:5.5; }
+.trace-svg .st-dot{ fill:var(--trace-ink); opacity:.8; }
 .trace-canvas{ touch-action:none; cursor:crosshair; }
 .btn-row .btn.hidden{ display:none !important; }
 .btn:disabled{ opacity:.45; }
@@ -287,7 +290,7 @@ html:lang(ja) .btn-row .btn, html:lang(ko) .btn-row .btn{ word-break:keep-all; }
    ・--hd-btn-bg = ヘッダーのボタンの地(半透明の白をやめ、どのテーマでも 4.5:1 以上になる色)
    ・--brand-ink = 文字を載せる緑(ヘッダーの地・主ボタン・chip.on・一覧の ✓ など)と、緑を文字色に使う所(下ナビの選択中・リンク)。
      みどり・しろ #237a52 / みずいろ #1f6f8f / くろ = --brand(字は --on-brand の濃い色)。
-     枠・線・飾り、なぞりの台のお手本の線・ゆびの線は --brand のまま(塗りのボタンの枠だけは地と同じ色にそろえる) */
+     枠・線・飾りは --brand のまま(塗りのボタンの枠だけは地と同じ色にそろえる)。なぞりの台のお手本の線・ゆびの線は --trace-ink(くろ だけ濃い緑・2026-10-30) */
 :root{ --on-brand:#fff; --hd-btn-bg:rgba(0,0,0,.28); --brand-ink:#237a52; }
 body[data-theme="aqua"]{ --brand-ink:#1f6f8f; }
 body[data-theme="white"]{ --brand-ink:#237a52; }
