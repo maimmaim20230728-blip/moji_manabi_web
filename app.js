@@ -9,7 +9,7 @@
      変えたら README の「シェルの変更点」に書く */
 (function(){
 
-var VER = '0.5.8';               // 🔴 更新のたびに上げる(build.gradle の versionName / sw.js の CACHE と一緒に)
+var VER = '0.5.9';               // 🔴 更新のたびに上げる(build.gradle の versionName / sw.js の CACHE と一緒に)
 var APP_KEY = 'moji_manabi';        // バックアップの識別(別アプリのファイルを読まない)
 var LS = 'moji.';
 var LS_PREF = LS + 'pref.v1';
@@ -272,6 +272,7 @@ function renderScreen(id){
   }
 }
 function showScreen(id, how){
+  if(id !== current){ try{ stopSpeak(); }catch(_){} }   // よみあげの声を別の画面へ持ち越さない(0.5.9)
   noteBack(current, id, how);   // 戻るボタンの来た道(2026-09-29)
   current = id;
   var secs = document.querySelectorAll('.screen');
