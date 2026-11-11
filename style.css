@@ -328,6 +328,23 @@ header#hd, .lang-label{ color:var(--on-brand); }
 .find-msg{ margin:6px 0 0; font-weight:700; color:var(--ink); overflow-wrap:anywhere; }
 .find-msg:empty{ margin:0; }
 
+/* ======== なぞり: お手本の太さ・濃さ(せってい)と「できた」の静かな手応え(0.5.10) ========
+   ・tw1 / ti1 は screens/trace.js が pref.extra の traceW / traceInk = 1 のときだけ台に付ける。台はどのテーマでも白地
+   ・trace-ok は「できた」で付く(まえの画・つぎの画・なぞりを けす で外れる)。点数・音は出さない */
+.trace-stage.tw1 .trace-svg path{ stroke-width:7; }
+.trace-stage.tw1 .trace-svg .st-cur{ stroke-width:8.5; }
+.trace-stage.ti1 .trace-svg .st-todo{ stroke:#a3b0a8; }
+.trace-stage.ti1 .trace-svg .st-done{ stroke:#6f927f; }
+.trace-stage{ transition:border-color .6s ease; }
+.trace-stage.trace-ok{ border-color:var(--trace-ink); }
+.trace-stage.trace-ok .trace-svg path.st-todo,
+.trace-stage.trace-ok .trace-svg path.st-done,
+.trace-stage.trace-ok .trace-svg path.st-cur{ stroke:var(--trace-ink); }
+@media (prefers-reduced-motion: reduce){ .trace-stage{ transition:none; } }
+/* 一覧の ✓ の字を大きく(色だけに頼らず見分けやすく・0.5.10)。字は .38em → .46em。
+   丸の大きさは前と同じ(.38em × 1.5 = .57em ≒ .46em × 1.25)にして、真ん中の漢字に重ならないようにする */
+#scr-list .kanji-btn.done::after{ font-size:.46em; width:1.25em; height:1.25em; }
+
 /* はじめての つかいかた(app.js openGuide・2026-09-30)。🔴この節はファイルの最後に置く(patch_guide.js がここから最後までを写す)。
    ほかの重ねた画面より上・確かめの窓より下。ボタンは下に固定した帯(地の色つき=長いページでも本文が透けない) */
 .ov.guide-ov{ z-index:350; padding-bottom:calc(128px + env(safe-area-inset-bottom)); }

@@ -73,7 +73,8 @@
       if(api.canSpeak()){
         var sp = api.el('button', 'btn', '🔊 ' + T('screen.trace.speak'));
         api.Tap.bind(sp, function(){
-          api.speak(readingOf(k), { lang:'ja', rate:0.9, onerror: function(){ api.toast(T('screen.trace.noVoice')); } });
+          /* 速さはせっていで ふつう(0.9・前からの速さ)/ ゆっくり(0.65)。0.5.10 */
+          api.speak(readingOf(k), { lang:'ja', rate:(api.getExtra('speakRate', 0) === 1 ? 0.65 : 0.9), onerror: function(){ api.toast(T('screen.trace.noVoice')); } });
         });
         rd.appendChild(sp);
       }
@@ -85,7 +86,8 @@
       c.appendChild(lbl);
 
       /* ---- 舞台: SVG(お手本) + canvas(なぞり) ---- */
-      var stage = api.el('div', 'trace-stage');
+      /* お手本の太さ・濃さ(せってい・各2段階)。値が 1 のときだけ ふとい / こい(0.5.10) */
+      var stage = api.el('div', 'trace-stage' + (api.getExtra('traceW', 0) === 1 ? ' tw1' : '') + (api.getExtra('traceInk', 0) === 1 ? ' ti1' : ''));
       var svg = svgEl('svg');
       svg.setAttribute('viewBox', '0 0 109 109');
       svg.setAttribute('class', 'trace-svg');
@@ -177,6 +179,7 @@
         }catch(_){}
       }
       function paint(){
+        stage.classList.remove('trace-ok');   // 画を動かしたら「できた」の色はもどす(0.5.10)
         paths.forEach(function(p, i){
           p.setAttribute('class', i < idx ? 'st-done' : (i === idx ? 'st-cur' : 'st-todo'));
           if(i !== idx){ p.style.transition = 'none'; p.style.strokeDasharray = ''; p.style.strokeDashoffset = ''; }
@@ -205,7 +208,7 @@
       var replayB = api.el('button', 'btn', T('screen.trace.replay'));
       var clearB = api.el('button', 'btn', T('screen.trace.clear'));
       api.Tap.bind(replayB, animateCurrent);
-      api.Tap.bind(clearB, clearCanvas);
+      api.Tap.bind(clearB, function(){ clearCanvas(); stage.classList.remove('trace-ok'); });
       row2.appendChild(replayB); row2.appendChild(clearB);
       c.appendChild(row2);
 
@@ -232,6 +235,17 @@
         if(!t || t.d !== todayKey() || !Array.isArray(t.list)) t = { d: todayKey(), list: [] };
         if(t.list.indexOf(k.char) < 0) t.list.push(k.char);
         if(!api.save('today', t)){ api.toast(T('common.storageFull')); return; }
+        /* 静かな手応え(点数・音なし・0.5.10): お手本の線と台の枠を、ゆびの線と同じ緑にやわらかく変える。
+           動きを減らす設定ならすぐ切りかえる。いまの画が動いている途中でも、その動き(stroke-dashoffset)は止めずに続ける */
+        try{
+          var calm = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+          paths.forEach(function(p, i){
+            var tr = calm ? [] : ['stroke .6s ease'];
+            if(i === idx && p.style.strokeDasharray) tr.unshift('stroke-dashoffset 1.3s ease-out');
+            p.style.transition = tr.length ? tr.join(', ') : 'none';
+          });
+        }catch(_){}
+        stage.classList.add('trace-ok');
         doneMsg.classList.remove('hidden');
         after.classList.remove('hidden');
         try{ after.scrollIntoView({ block:'nearest' }); }catch(_){}

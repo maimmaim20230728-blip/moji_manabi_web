@@ -9,7 +9,7 @@
      変えたら README の「シェルの変更点」に書く */
 (function(){
 
-var VER = '0.5.9';               // 🔴 更新のたびに上げる(build.gradle の versionName / sw.js の CACHE と一緒に)
+var VER = '0.5.10';              // 🔴 更新のたびに上げる(build.gradle の versionName / sw.js の CACHE と一緒に)
 var APP_KEY = 'moji_manabi';        // バックアップの識別(別アプリのファイルを読まない)
 var LS = 'moji.';
 var LS_PREF = LS + 'pref.v1';
@@ -47,6 +47,14 @@ function sanitizePref(p){
 }
 var pref = sanitizePref(loadJSON(LS_PREF));
 function savePref(){ return saveJSON(LS_PREF, pref); }
+/* 2段階の設定(0=ふつう・1=もう一方・0.5.10)。pref.extra の値は 1 だけを認め、バックアップの値が変でも 0 として扱う */
+function extraLevel(k){ return pref.extra[k] === 1 ? 1 : 0; }
+function toggleExtra(k){
+  var had = Object.prototype.hasOwnProperty.call(pref.extra, k), old = pref.extra[k];
+  pref.extra[k] = extraLevel(k) ? 0 : 1;
+  if(!savePref()){ if(had) pref.extra[k] = old; else delete pref.extra[k]; toast(T('common.storageFull')); }
+  applyI18n();
+}
 function next(list, cur){ return list[(list.indexOf(cur) + 1) % list.length]; }
 
 /* ---- i18n ---- */
@@ -68,6 +76,7 @@ var I18N_MAP = {
   'bk-hint':'set.bkHint', 'bk-export':'set.bkExport', 'bk-import':'set.bkImport',
   'set-note':'set.note', 'link-privacy':'set.privacy', 'about-credit':'set.credit',
   'set-src-label':'set.srcLabel', 'set-src-share':'set.srcShare',   // 書き順データの出典(せってい画面の #set-app-rows)
+  'set-app-lbl-mw':'set.modelW', 'set-app-lbl-mi':'set.modelInk', 'set-app-lbl-sr':'set.speakRate',   // なぞる画面のお手本の太さ・濃さ・よみあげの速さ(0.5.10)
   'set-src-grade':'set.srcGrade', 'set-src-reading':'set.srcReading'   // 入れた字と年ごとの分け方・読みの出典(2026-09-29)
 };
 function applyI18n(){
@@ -83,6 +92,9 @@ function applyI18n(){
   if($('btn-theme')) $('btn-theme').textContent = T('set.themes')[THEMES.indexOf(pref.theme)];
   if($('btn-bgm'))   $('btn-bgm').textContent   = T('set.bgms')[BGMS.indexOf(pref.bgm)];
   if($('btn-sound')) $('btn-sound').textContent = pref.sound ? T('set.on') : T('set.off');
+  if($('set-app-btn-mw')) $('set-app-btn-mw').textContent = T('set.modelWs')[extraLevel('traceW')];
+  if($('set-app-btn-mi')) $('set-app-btn-mi').textContent = T('set.modelInks')[extraLevel('traceInk')];
+  if($('set-app-btn-sr')) $('set-app-btn-sr').textContent = T('set.speakRates')[extraLevel('speakRate')];
   if($('about-ver')) $('about-ver').textContent = 'v' + VER;
   document.title = T('app.name');
   fitTitle();
@@ -644,6 +656,9 @@ function init(){
   Tap.bind($('btn-theme'), function(){ pref.theme = next(THEMES, pref.theme); applyTheme(); savePref(); applyI18n(); });
   Tap.bind($('btn-bgm'), function(){ pref.bgm = next(BGMS, pref.bgm); applySound(true); savePref(); applyI18n(); });
   Tap.bind($('btn-sound'), function(){ pref.sound = !pref.sound; Sound.setEnabled(pref.sound); savePref(); applyI18n(); });
+  Tap.bind($('set-app-btn-mw'), function(){ toggleExtra('traceW'); });
+  Tap.bind($('set-app-btn-mi'), function(){ toggleExtra('traceInk'); });
+  Tap.bind($('set-app-btn-sr'), function(){ toggleExtra('speakRate'); });
   if($('set-lang')) $('set-lang').addEventListener('change', function(){ pref.lang = $('set-lang').value; savePref(); applyI18n(); });
   Tap.bind($('bk-export'), exportBackup);
   Tap.bind($('bk-import'), function(){ $('bk-file').click(); });

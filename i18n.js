@@ -36,6 +36,9 @@ var ja = {
     theme:'いろ', themes:['みどり','みずいろ','しろ','くろ'],
     bgm:'BGM', bgms:['なし','みどりの音','あおの音'],
     sound:'タップ音', on:'ON', off:'OFF',
+    modelW:'お手本の ふとさ', modelWs:['ふつう','ふとい'],
+    modelInk:'お手本の こさ', modelInks:['ふつう','こい'],
+    speakRate:'よみあげの はやさ', speakRates:['ふつう','ゆっくり'],
     bkHint:'あたらしい スマホに うつるときは、「かきだす」で ファイルを ほぞんして、あたらしい スマホで「よみこむ」を おしてください。',
     bkExport:'かきだす', bkImport:'よみこむ',
     exported:'かきだしました ✓', imported:'よみこみました ✓', importFail:'よみこめませんでした',
@@ -150,6 +153,9 @@ var en = {
     theme:'Color', themes:['Green','Light blue','White','Black'],
     bgm:'Music', bgms:['None','Green tone','Blue tone'],
     sound:'Tap sound', on:'ON', off:'OFF',
+    modelW:'Model line thickness', modelWs:['Normal','Thick'],
+    modelInk:'Model line darkness', modelInks:['Normal','Dark'],
+    speakRate:'Reading speed', speakRates:['Normal','Slow'],
     bkHint:'When you move to a new phone, tap "Export" to save a file, then tap "Import" on the new phone.',
     bkExport:'Export', bkImport:'Import',
     exported:'Exported ✓', imported:'Imported ✓', importFail:'Could not import',
@@ -313,6 +319,21 @@ TBL.de = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "Blauer Klang"
     ],
     "sound": "Tippton",
+    "modelW": "Dicke der Vorlage",
+    "modelWs": [
+      "Normal",
+      "Dick"
+    ],
+    "modelInk": "Farbstärke der Vorlage",
+    "modelInks": [
+      "Normal",
+      "Kräftig"
+    ],
+    "speakRate": "Vorlesetempo",
+    "speakRates": [
+      "Normal",
+      "Langsam"
+    ],
     "on": "Ein",
     "off": "Aus",
     "bkHint": "Wenn Sie zu einem neuen Smartphone wechseln, tippen Sie auf „Exportieren“, um eine Datei zu speichern. Tippen Sie dann auf dem neuen Smartphone auf „Importieren“.",
@@ -488,6 +509,21 @@ TBL.fr = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "Son bleu"
     ],
     "sound": "Son au toucher",
+    "modelW": "Trait du modèle",
+    "modelWs": [
+      "Normal",
+      "Épais"
+    ],
+    "modelInk": "Teinte du modèle",
+    "modelInks": [
+      "Normale",
+      "Foncée"
+    ],
+    "speakRate": "Vitesse de lecture",
+    "speakRates": [
+      "Normale",
+      "Lente"
+    ],
     "on": "ON",
     "off": "OFF",
     "bkHint": "Pour passer à un nouveau téléphone, appuyez sur \"Exporter\" pour enregistrer un fichier, puis appuyez sur \"Importer\" sur le nouveau téléphone.",
@@ -663,6 +699,21 @@ TBL.es = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "Sonido azul"
     ],
     "sound": "Sonido al tocar",
+    "modelW": "Grosor del modelo",
+    "modelWs": [
+      "Normal",
+      "Grueso"
+    ],
+    "modelInk": "Intensidad del modelo",
+    "modelInks": [
+      "Normal",
+      "Fuerte"
+    ],
+    "speakRate": "Velocidad de lectura",
+    "speakRates": [
+      "Normal",
+      "Lenta"
+    ],
     "on": "ON",
     "off": "OFF",
     "bkHint": "Al pasar a un teléfono nuevo, tocar «Exportar» para guardar un archivo y luego tocar «Importar» en el teléfono nuevo.",
@@ -838,6 +889,21 @@ TBL.it = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "Suono blu"
     ],
     "sound": "Suono al tocco",
+    "modelW": "Spessore del modello",
+    "modelWs": [
+      "Normale",
+      "Spesso"
+    ],
+    "modelInk": "Intensità del modello",
+    "modelInks": [
+      "Normale",
+      "Forte"
+    ],
+    "speakRate": "Velocità di lettura",
+    "speakRates": [
+      "Normale",
+      "Lenta"
+    ],
     "on": "ON",
     "off": "OFF",
     "bkHint": "Quando passa a un nuovo telefono, tocchi «Esporta» per salvare un file, poi sul nuovo telefono tocchi «Importa».",
@@ -1013,6 +1079,21 @@ TBL.pt = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "Som azul"
     ],
     "sound": "Som ao tocar",
+    "modelW": "Espessura do modelo",
+    "modelWs": [
+      "Normal",
+      "Grossa"
+    ],
+    "modelInk": "Intensidade do modelo",
+    "modelInks": [
+      "Normal",
+      "Forte"
+    ],
+    "speakRate": "Velocidade da leitura",
+    "speakRates": [
+      "Normal",
+      "Lenta"
+    ],
     "on": "ON",
     "off": "OFF",
     "bkHint": "Ao mudar para um novo smartphone, tocar em \"Exportar\" para guardar uma cópia dos dados e, depois, tocar em \"Importar\" no novo smartphone.",
@@ -1188,6 +1269,21 @@ TBL.nl = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "Blauwe toon"
     ],
     "sound": "Tikgeluid",
+    "modelW": "Dikte van het voorbeeld",
+    "modelWs": [
+      "Normaal",
+      "Dik"
+    ],
+    "modelInk": "Kleursterkte van het voorbeeld",
+    "modelInks": [
+      "Normaal",
+      "Sterk"
+    ],
+    "speakRate": "Snelheid van voorlezen",
+    "speakRates": [
+      "Normaal",
+      "Langzaam"
+    ],
     "on": "AAN",
     "off": "UIT",
     "bkHint": "Gaat u over naar een nieuwe telefoon? Tik dan op ‘Exporteren’ om een bestand op te slaan, en tik daarna op de nieuwe telefoon op ‘Importeren’.",
@@ -1363,6 +1459,21 @@ TBL.sv = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "Blå klang"
     ],
     "sound": "Tryckljud",
+    "modelW": "Tjocklek på förebilden",
+    "modelWs": [
+      "Normal",
+      "Tjock"
+    ],
+    "modelInk": "Färgstyrka på förebilden",
+    "modelInks": [
+      "Normal",
+      "Stark"
+    ],
+    "speakRate": "Hastighet för uppläsning",
+    "speakRates": [
+      "Normal",
+      "Långsam"
+    ],
     "on": "PÅ",
     "off": "AV",
     "bkHint": "När du byter till en ny telefon: tryck på ”Exportera” för att spara en fil, och tryck sedan på ”Importera” i den nya telefonen.",
@@ -1538,6 +1649,21 @@ TBL.ko = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "파랑의 소리"
     ],
     "sound": "터치음",
+    "modelW": "본보기 굵기",
+    "modelWs": [
+      "보통",
+      "굵게"
+    ],
+    "modelInk": "본보기 진하기",
+    "modelInks": [
+      "보통",
+      "진하게"
+    ],
+    "speakRate": "읽어 주기 속도",
+    "speakRates": [
+      "보통",
+      "느리게"
+    ],
     "on": "ON",
     "off": "OFF",
     "bkHint": "새 스마트폰으로 옮길 때는 '내보내기'로 파일을 저장한 다음, 새 스마트폰에서 '가져오기'를 눌러 주세요.",
@@ -1713,6 +1839,21 @@ TBL.zh = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "蓝色之音"
     ],
     "sound": "点击音",
+    "modelW": "示范线条粗细",
+    "modelWs": [
+      "普通",
+      "粗"
+    ],
+    "modelInk": "示范线条深浅",
+    "modelInks": [
+      "普通",
+      "深"
+    ],
+    "speakRate": "朗读速度",
+    "speakRates": [
+      "普通",
+      "慢"
+    ],
     "on": "开",
     "off": "关",
     "bkHint": "换新手机时，请先点“导出”保存文件，再在新手机上点“导入”。",
@@ -1888,6 +2029,21 @@ TBL.ar = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "نغمة زرقاء"
     ],
     "sound": "صوت النقر",
+    "modelW": "سُمك خط النموذج",
+    "modelWs": [
+      "عادي",
+      "سميك"
+    ],
+    "modelInk": "درجة لون خط النموذج",
+    "modelInks": [
+      "عادية",
+      "غامقة"
+    ],
+    "speakRate": "سرعة القراءة",
+    "speakRates": [
+      "عادية",
+      "بطيئة"
+    ],
     "on": "تشغيل",
     "off": "إيقاف",
     "bkHint": "عند الانتقال إلى هاتف جديد، اضغط على «تصدير» لحفظ ملف، ثم اضغط على «استيراد» في الهاتف الجديد.",

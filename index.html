@@ -62,6 +62,10 @@
     <!-- BUILDER: アプリ固有の設定行はここに足す(id は set-app-* で) -->
     <!-- 書き順データの出典: 文言は app.js の I18N_MAP(set.srcLabel / set.srcShare)。リンクと作者名はどの言語でも同じ -->
     <div id="set-app-rows">
+      <!-- なぞる画面のお手本の太さ・濃さ・よみあげの速さ(各2段階・0.5.10)。文言は app.js の I18N_MAP と applyI18n、保存は pref.extra(traceW / traceInk / speakRate) -->
+      <div class="set-row"><span id="set-app-lbl-mw"></span><button id="set-app-btn-mw" class="set-btn"></button></div>
+      <div class="set-row"><span id="set-app-lbl-mi"></span><button id="set-app-btn-mi" class="set-btn"></button></div>
+      <div class="set-row"><span id="set-app-lbl-sr"></span><button id="set-app-btn-sr" class="set-btn"></button></div>
       <p class="hint"><span id="set-src-label"></span> <bdi><a href="https://kanjivg.tagaini.net/" target="_blank" rel="noopener">KanjiVG</a> (Ulrich Apel, <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noopener">CC BY-SA 3.0</a>)</bdi></p>
       <p id="set-src-share" class="hint"></p>
       <!-- 字の選び方・年ごとの分け方と、読みの出典(文言は app.js の I18N_MAP = set.srcGrade / set.srcReading・12言語) -->
