@@ -334,7 +334,7 @@ header#hd, .lang-label{ color:var(--on-brand); }
 .trace-stage.tw1 .trace-svg path{ stroke-width:7; }
 .trace-stage.tw1 .trace-svg .st-cur{ stroke-width:8.5; }
 .trace-stage.ti1 .trace-svg .st-todo{ stroke:#a3b0a8; }
-.trace-stage.ti1 .trace-svg .st-done{ stroke:#6f927f; }
+.trace-stage.ti1 .trace-svg .st-done{ stroke:#1b4d36; }
 .trace-stage{ transition:border-color .6s ease; }
 .trace-stage.trace-ok{ border-color:var(--trace-ink); }
 .trace-stage.trace-ok .trace-svg path.st-todo,
